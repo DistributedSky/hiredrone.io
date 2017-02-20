@@ -1,0 +1,60 @@
+$width-base-max: 1280px;
+
+$point-mobile: 550px;
+$point-tablet: 767px;
+$point-desktop-s: 1023px;
+$point-desktop-m: 1280px;
+$point-desktop-b: 1860px;
+
+$c-gray-dark: #222;
+$c-gray-mid: #414141;
+$c-gray-light: #D6D6D6;
+$c-blue: #00aded;
+$c-green: #6abc45;
+$c-red: #d23d3c;
+
+$c-base: #4d4d4d;
+
+$c-gray-0: #f9f9f9;
+$c-gray-1: #f2f2f2;
+$c-gray-2: #e6e6e6;
+$c-gray-3: #ccc;
+$c-gray-4: #b3b3b3;
+$c-gray-5: #999;
+$c-gray-6: #808080;
+$c-gray-7: #666;
+$c-gray-8: #4d4d4d;
+$c-gray-9: #333;
+$c-gray-10: #1A1A1A;
+$c-gray-11: #000;
+
+$c-text: $c-base;
+$c-link: $c-blue;
+$c-hover: $c-green;
+
+// $color-table-head: $c-base;
+// $color-table-border: $color-bluecob-3;
+// $color-table-border_hov: $color-bluecob-6;
+
+$font-family-base:  'Open Sans', Tahoma, Verdana, sans-serif;
+$font-family-second: 'Gotham Pro Bol', Tahoma, Verdana, sans-serif;
+$scale: 1.5; //для вычисления интерлиньяжа
+$scale-small: 1.2; //например, для вычисления интерлиньяжа заголовков
+$font-size-btnBase: 17;
+$font-base-size: 14;
+
+@function rythm-calc($font-size: $font-base-size, $scale: $scale){
+  @return $font-size * $scale;
+}
+$vertical-rythm: rythm-calc($font-base-size);
+$line-height: $vertical-rythm;
+
+$padding-base: $vertical-rythm;
+$padding-base-side: $padding-base*2;
+
+
+
+
+
+
+$modernizr-nosvg: 'no-svg';

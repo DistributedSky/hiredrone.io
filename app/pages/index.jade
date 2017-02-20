@@ -1,0 +1,52 @@
+extends extends/layout.jade
+
+block head
+	- var pageTitle = 'Decentralised sky'
+
+block layout
+	- var inside = false
+
+block content
+	#index-banner
+		.setw
+			#index-banner_text
+				h1 
+					| We help businesses 
+					span.t-blue use drones
+					| .
+
+				.flexcols
+					.flexcols-i Connect drones with each other or your customers 
+					.flexcols-i Set up autonomous tracks or give your clients choise of waypoints
+					.flexcols-i Use drones safely and without human operator
+
+			#index-banner_usage.flexcols
+					.flexcols-i
+						a(href="#")
+							span.usage-img(style="background-image: url('assets/i/usage1.jpg');")
+							span.usage-text Aerial Filming
+					.flexcols-i
+						a(href="#")
+							span.usage-img(style="background-image: url('assets/i/usage2.jpg');")
+							span.usage-text Security n monitoring
+					.flexcols-i
+						a(href="#")
+							span.usage-img(style="background-image: url('assets/i/usage3.jpg');")
+							span.usage-text Drone Delivery
+
+
+	.setw
+		.sec-content
+			p Today, all developed countries have the same problem with civil drone use. This problem is in providing safe usage of a single airspace for a lot of drones. It is significant to solving this problem via decentralized technologies.
+			p Drone employee is opensource software, which can provide safe airspace usage. Drone employee is scalable solution for using to the tune of single park zone to the whole country airspace. Blockchain technology allows us to realize that.
+			p Therefore 
+				strong Drone Employee is solution that provides Blockchain technology for Global civil drone vendors today
+				| .
+			blockquote
+				ul
+					li No matter what the area size: park, city, state, country, world.
+					li Open source implementation. Just what you need for use — download install package.
+					li Ready-to-use documentation and support on request.
+					li Provides secure multiple flying drones
+
+			a(href="#").t-bold Learn more

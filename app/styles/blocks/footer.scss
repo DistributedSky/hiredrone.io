@@ -1,0 +1,156 @@
+/*======== FOOTER VARIABLES & MIXINS & EXTENDS =========*/
+
+
+/*======== FOOTER BASIC =========*/
+
+footer[role='contentinfo']{
+	@include font-size(12, $scale);
+}
+
+
+
+
+.footer-sec{
+	// @extend %floating-fix;
+	@include rem('padding-top', $padding-base/2 );
+	@include rem('padding-bottom', $padding-base/2);
+}
+
+
+
+
+#footer-steps{
+	background-color: $c-gray-dark;
+	color: #fff;
+	text-align: left;
+
+	@include rem('padding-top', $padding-base-side);
+	@include rem('padding-bottom', $padding-base-side);
+
+	.setw { position: relative; }
+
+	#footer-dec{
+		position: absolute;
+		top: -144px;
+		left: -62px;
+
+		@media screen and (max-width: #{$width-base-max + $padding-base-side*2}){
+			display: none;
+		}
+	}
+
+	.d-t_cell_t{
+	 	@include rem('padding-left', 60);
+
+		 .d-t_cell_t{
+		 	@include rem('padding-left', 20);
+		 }
+
+		 &:first-child, .d-t_cell_t:first-child{
+		 	padding-left: 0;
+		 }
+
+		 p{
+		 	max-width: 300px;
+		 }
+	}
+
+
+	#footer-steps_or{
+		color: $c-gray-mid;
+		@include font-size(24, 1);
+		font-weight: bold;
+		text-align: center;
+	}
+
+	h3{
+		@include rem('margin-bottom', $padding-base-side);
+	}
+
+
+	@include max_tablet(){
+		div[class ^= 'sprite-']{
+ 			display: none;
+ 		}
+ 	}
+
+ 	@include mobile(){
+ 		.d-t > .d-t_cell_t{
+	 		display: block;
+	 		padding-left: 0;
+	 		@include rem('margin-bottom', $padding-base-side);
+	 	}
+
+	 	#footer-steps_or{
+	 		text-align: left;
+	 	}
+
+	 	.d-t .d-t_cell_t .d-t_cell_t{
+ 			border-left: 2px solid $c-gray-mid;
+ 		}
+ 	}
+}
+
+
+
+
+
+
+#footer-bottom{
+	text-align: center;
+	
+
+	.d-t{
+		table-layout: fixed;
+	}
+
+	.lineobj a{
+		color: $c-base;
+	}
+
+	span[class^='icon-']{
+		@include font-size(24, 1);
+	}
+
+	.icon-git:hover { color: $c-gray-10; }
+	.icon-twitter:hover { color: #1DA1F2; }
+	.icon-youtube:hover { color: #E62117; }
+
+	.mobile{
+		display: none;
+	}
+
+	@include mobile(){
+		
+		.d-t, .d-t_cell_m{
+			display: block;
+			text-align: center;
+		}
+
+		.d-t_cell_m{
+			@include rem('padding', 12, 0);
+			border-bottom: 1px solid $c-gray-2;
+
+			&:last-child{
+				border-bottom: 0;
+			}
+		}
+
+		span[class^='icon-']{
+			@include font-size(44, 1);
+		}
+
+		.mobile{
+			display: block;
+
+			a{
+				color: $c-link;
+				@include font-size(15, 1);
+			}
+		}
+
+		.desktop{
+			display: none;
+		}
+	}
+}

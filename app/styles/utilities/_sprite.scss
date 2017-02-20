@@ -1,0 +1,27 @@
+$icons: (
+    sprite: (width: 120px, height: 337px, pngPath: '../i/sprite.png', svgPath: '../i/sprite.svg'),
+    arrow-grayDashed: (width: 57.435px, height: 16.49px, backgroundX: 0px, backgroundY: 0px),
+    arrow-grayFigured: (width: 120px, height: 118.288px, backgroundX: 0px, backgroundY: -17px),
+    bionicLens: (width: 103.925px, height: 79.082px, backgroundX: 0px, backgroundY: -136px),
+    drone: (width: 86.589px, height: 40.499px, backgroundX: 0px, backgroundY: -216px),
+    viewfinder: (width: 94.849px, height: 80px, backgroundX: 0px, backgroundY: -257px),
+);
+
+$sprite: map-get($icons, sprite);
+
+@mixin get-sprite($spritename){
+    $spritename: map-get($icons, $spritename);
+    
+    width: map-get($spritename, width);
+    height: map-get($spritename, height);
+    background-image: url(map-get($sprite, svgPath));
+    background-position: map-get($spritename, backgroundX) map-get($spritename, backgroundY);
+
+    .no-svg & { background-image: url(map-get($sprite, pngPath)); }
+}
+
+.sprite-arrow-grayDashed { @include get-sprite(arrow-grayDashed); }
+.sprite-arrow-grayFigured { @include get-sprite(arrow-grayFigured); }
+.sprite-bionicLens { @include get-sprite(bionicLens); }
+.sprite-drone { @include get-sprite(drone); }
+.sprite-viewfinder { @include get-sprite(viewfinder); }
