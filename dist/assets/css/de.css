@@ -51,12 +51,19 @@ input, select {
   }
 }
 
-input, textarea, a[class*='btn-'], input[class*='btn-'], button, input[type='submit'], .d-ib, .lineobj > *, .blog-postinfo .item, .tags a, .tags .icon-tag {
+.gallery-item, input, textarea, a[class*='btn-'], input[class*='btn-'], button, input[type='submit'], .d-ib, .lineobj > *, .blog-postinfo .item, .tags a, .tags .icon-tag {
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: middle;
   zoom: 1;
   *display: inline;
+}
+
+.gallery {
+  /*delete spaces between inline-block*/
+  font-size: 0;
+  letter-spacing: -1px;
+  line-height: 0;
 }
 
 .f-zoom, .blog-wrap {
@@ -188,22 +195,22 @@ input, textarea, a[class*='btn-'], input[class*='btn-'], button, input[type='sub
 
 @font-face {
   font-family: "Gotham Pro Bol";
-  src: url('../fonts/GothaProBol.eot?1488362570');
-  src: url('../fonts/GothaProBol.eot?&1488362570#iefix') format('embedded-opentype'), url('../fonts/GothaProBol.woff?1488362570') format('woff'), url('../fonts/GothaProBol.ttf?1451944208') format('truetype');
+  src: url('../fonts/GothaProBol.eot?1488362573');
+  src: url('../fonts/GothaProBol.eot?&1488362573#iefix') format('embedded-opentype'), url('../fonts/GothaProBol.woff?1488362573') format('woff'), url('../fonts/GothaProBol.ttf?1451944208') format('truetype');
 }
 @font-face {
   font-family: "Open Sans";
-  src: url('../fonts/OpenSans-Regular.eot?1488362571');
-  src: url('../fonts/OpenSans-Regular.eot?&1488362571#iefix') format('embedded-opentype'), url('../fonts/OpenSans-Regular.woff?1488362571') format('woff'), url('../fonts/OpenSans-Regular.ttf?1415701385') format('truetype');
+  src: url('../fonts/OpenSans-Regular.eot?1488362573');
+  src: url('../fonts/OpenSans-Regular.eot?&1488362573#iefix') format('embedded-opentype'), url('../fonts/OpenSans-Regular.woff?1488362573') format('woff'), url('../fonts/OpenSans-Regular.ttf?1415701385') format('truetype');
   font-weight: normal;
 }
 @font-face {
   font-family: "Open Sans";
-  src: url('../fonts/OpenSans-Bold.eot?1488362571');
-  src: url('../fonts/OpenSans-Bold.eot?&1488362571#iefix') format('embedded-opentype'), url('../fonts/OpenSans-Bold.woff?1488362571') format('woff'), url('../fonts/OpenSans-Bold.ttf?1415701385') format('truetype');
+  src: url('../fonts/OpenSans-Bold.eot?1488362573');
+  src: url('../fonts/OpenSans-Bold.eot?&1488362573#iefix') format('embedded-opentype'), url('../fonts/OpenSans-Bold.woff?1488362573') format('woff'), url('../fonts/OpenSans-Bold.ttf?1415701385') format('truetype');
   font-weight: bold;
 }
-body {
+body, .gallery-item {
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 21px;
@@ -413,6 +420,109 @@ hr.hr-small {
 }
 .entry-content img.aligncenter {
   margin: 0 auto;
+}
+
+/*Galleries*/
+.gallery {
+  margin-left: -4%;
+}
+@media screen and (max-width: 767px) {
+  .gallery {
+    margin-left: 0;
+  }
+}
+
+.gallery-item {
+  width: 29%;
+  vertical-align: top;
+  box-sizing: border-box;
+  margin-left: 4%;
+  margin-bottom: 4%;
+}
+@media screen and (max-width: 551px) {
+  .gallery-item {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 42;
+  }
+}
+
+.gallery-columns-2 .gallery-item {
+  width: 46%;
+}
+@media screen and (max-width: 551px) {
+  .gallery-columns-2 .gallery-item {
+    width: 100%;
+  }
+}
+
+.gallery-columns-4 .gallery-item {
+  width: 21%;
+}
+@media screen and (max-width: 551px) {
+  .gallery-columns-4 .gallery-item {
+    width: 100%;
+  }
+}
+
+.gallery-columns-3 .gallery-item {
+  width: 29%;
+}
+@media screen and (max-width: 551px) {
+  .gallery-columns-3 .gallery-item {
+    width: 100%;
+  }
+}
+
+.gallery-columns-5 .gallery-item {
+  width: 16%;
+}
+@media screen and (max-width: 551px) {
+  .gallery-columns-5 .gallery-item {
+    width: 100%;
+  }
+}
+
+.gallery-columns-6 .gallery-item {
+  width: 12%;
+}
+@media screen and (max-width: 551px) {
+  .gallery-columns-6 .gallery-item {
+    width: 100%;
+  }
+}
+
+.gallery-icon {
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.gallery-icon:after {
+  content: "";
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.gallery-icon img {
+  display: inline-block;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  margin: 0 auto;
+  vertical-align: middle;
+}
+
+.gallery-size-thumbnail .gallery-icon {
+  height: 200px;
+}
+@media screen and (max-width: 551px) {
+  .gallery-size-thumbnail .gallery-icon {
+    height: auto;
+  }
+}
+
+.gallery-caption {
+  text-align: center;
 }
 
 input, textarea, a[class*='btn-'], input[class*='btn-'], button, input[type='submit'] {
