@@ -193,8 +193,12 @@ hr{
 
 /*STYLES FOR POSTS*/
 .entry-content{
-  img.aligncenter{
+  img{
     display: block;
+    max-width: 100%;
+  }
+
+  img.aligncenter{
     margin: 0 auto;
   }
 }

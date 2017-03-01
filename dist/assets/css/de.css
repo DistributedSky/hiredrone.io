@@ -188,19 +188,19 @@ input, textarea, a[class*='btn-'], input[class*='btn-'], button, input[type='sub
 
 @font-face {
   font-family: "Gotham Pro Bol";
-  src: url('../fonts/GothaProBol.eot?1487595571');
-  src: url('../fonts/GothaProBol.eot?&1487595571#iefix') format('embedded-opentype'), url('../fonts/GothaProBol.woff?1487595571') format('woff'), url('../fonts/GothaProBol.ttf?1451944208') format('truetype');
+  src: url('../fonts/GothaProBol.eot?1488362570');
+  src: url('../fonts/GothaProBol.eot?&1488362570#iefix') format('embedded-opentype'), url('../fonts/GothaProBol.woff?1488362570') format('woff'), url('../fonts/GothaProBol.ttf?1451944208') format('truetype');
 }
 @font-face {
   font-family: "Open Sans";
-  src: url('../fonts/OpenSans-Regular.eot?1487595571');
-  src: url('../fonts/OpenSans-Regular.eot?&1487595571#iefix') format('embedded-opentype'), url('../fonts/OpenSans-Regular.woff?1487595571') format('woff'), url('../fonts/OpenSans-Regular.ttf?1415701385') format('truetype');
+  src: url('../fonts/OpenSans-Regular.eot?1488362571');
+  src: url('../fonts/OpenSans-Regular.eot?&1488362571#iefix') format('embedded-opentype'), url('../fonts/OpenSans-Regular.woff?1488362571') format('woff'), url('../fonts/OpenSans-Regular.ttf?1415701385') format('truetype');
   font-weight: normal;
 }
 @font-face {
   font-family: "Open Sans";
-  src: url('../fonts/OpenSans-Bold.eot?1487595571');
-  src: url('../fonts/OpenSans-Bold.eot?&1487595571#iefix') format('embedded-opentype'), url('../fonts/OpenSans-Bold.woff?1487595571') format('woff'), url('../fonts/OpenSans-Bold.ttf?1415701385') format('truetype');
+  src: url('../fonts/OpenSans-Bold.eot?1488362571');
+  src: url('../fonts/OpenSans-Bold.eot?&1488362571#iefix') format('embedded-opentype'), url('../fonts/OpenSans-Bold.woff?1488362571') format('woff'), url('../fonts/OpenSans-Bold.ttf?1415701385') format('truetype');
   font-weight: bold;
 }
 body {
@@ -407,8 +407,11 @@ hr.hr-small {
 }
 
 /*STYLES FOR POSTS*/
-.entry-content img.aligncenter {
+.entry-content img {
   display: block;
+  max-width: 100%;
+}
+.entry-content img.aligncenter {
   margin: 0 auto;
 }
 
@@ -822,7 +825,7 @@ footer[role='contentinfo'] {
 /*======== MAIN SCSS VARIABLES & MIXINS & EXTENDS =========*/
 /*======== BASIC STYLES =========*/
 body {
-  background-color: #fafafa;
+  background-color: #f3f3f3;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
