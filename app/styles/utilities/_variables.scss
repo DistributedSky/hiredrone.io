@@ -40,8 +40,8 @@ $font-family-base:  'Open Sans', Tahoma, Verdana, sans-serif;
 $font-family-second: 'Gotham Pro Bol', Tahoma, Verdana, sans-serif;
 $scale: 1.5; //для вычисления интерлиньяжа
 $scale-small: 1.2; //например, для вычисления интерлиньяжа заголовков
-$font-size-btnBase: 17;
-$font-base-size: 14;
+$font-size-btnBase: 16;
+$font-base-size: 13;
 
 @function rythm-calc($font-size: $font-base-size, $scale: $scale){
   @return $font-size * $scale;
@@ -58,3 +58,4 @@ $padding-base-side: $padding-base*2;
 
 
 $modernizr-nosvg: 'no-svg';
+$modernizr-animation: 'cssanimations';

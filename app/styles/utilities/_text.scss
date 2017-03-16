@@ -1,6 +1,8 @@
 @include font-face("Gotham Pro Bol", font-files("GothaProBol.woff","GothaProBol.ttf"), "GothaProBol.eot");
-@include font-face("Open Sans", font-files("OpenSans-Regular.woff","OpenSans-Regular.ttf"), "OpenSans-Regular.eot", normal);
-@include font-face("Open Sans", font-files("OpenSans-Bold.woff","OpenSans-Bold.ttf"), "OpenSans-Bold.eot", bold);
+@include font-face("Open Sans", font-files("OpenSans-Light.woff","OpenSans-Light.ttf"), "OpenSans-Light.eot", 100);
+@include font-face("Open Sans", font-files("OpenSans-Regular.woff","OpenSans-Regular.ttf"), "OpenSans-Regular.eot", 400);
+@include font-face("Open Sans", font-files("OpenSans-Bold.woff","OpenSans-Bold.ttf"), "OpenSans-Bold.eot", 800);
+
 
 @mixin font-size($font_px, $scale: $scale, $important: 'false')
 {
@@ -28,7 +30,11 @@ html {
   @include font_percentage($font-base-size);
 
   @include min_desktop_m(){
-    @include font_percentage(16);
+    @include font_percentage($font-base-size + 2);
+  }
+
+  @include mobile(){
+    @include font_percentage($font-base-size - 2);
   }
 
 }
@@ -65,26 +71,26 @@ a {
 #{headings()} {
   @include rem('margin-top', $vertical-rythm*2);
   @include rem('margin-bottom', $vertical-rythm);
+  text-align: center;
 
   &:first-child{
     margin-top: 0;
   }
 }
 
-h1, h2 {
+h1 {
   font-family: $font-family-second;
 }
 
 h1 { 
   @include font-size(40, $scale-small); 
-  text-align: center;
   @include rem('margin-bottom', $vertical-rythm*2);
-  color: $c-gray-9;
+  color: $c-gray-dark;
 }
 
 h2 { @include font-size(26, $scale-small); @include rem('margin-top', $vertical-rythm*4); }
-h3 { @include font-size(24, $scale-small); }
-h4 { @include font-size(20, $scale-small); }
+h3 { @include font-size(20, $scale-small); }
+h4 { @include font-size(18, $scale-small); }
 h5 { @include font-size(16, $scale-small); }
 
 ul, ol {

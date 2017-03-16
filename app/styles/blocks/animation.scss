@@ -1,0 +1,48 @@
+$patternReveal-duration: 1.6s; 
+$patternReveal-delay: 1s; 
+
+
+$circle1Reveal-duration: 0.4s; 
+$circle1Reveal-delay: $patternReveal-delay + 0.4; 
+
+@keyframes PatternReveal {
+  0% {
+    background-size: 200%;
+  }
+  100% {
+    background-size: 25%;
+  }
+}
+
+@keyframes CircleReveal{
+	0% {
+		opacity: 0;
+		visibility: hidden;
+		top: 8px;
+	}
+	100% {
+		opacity: 1;
+		visibility: visible;
+		top: 0;
+	}
+}
+
+
+.#{$modernizr-animation}{
+
+	// header[role='banner'].screen{
+	// 	animation: PatternReveal $patternReveal-duration $patternReveal-delay cubic-bezier(0.42,0.48,0.56,1) forwards;		
+	// }
+	
+	#index-banner_decor-1{
+		.circle{
+			position: relative;
+			opacity: 0;
+			visibility: hidden;
+			top: 8px;
+
+			animation: CircleReveal $patternReveal-duration $patternReveal-delay cubic-bezier(0.42,0.48,0.56,1) forwards;
+		}
+	}
+
+}

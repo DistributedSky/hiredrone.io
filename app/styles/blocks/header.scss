@@ -1,20 +1,96 @@
 /*======== HEADER VARIABLES & MIXINS & EXTENDS =========*/
 $menutoggler_size: 40;
-$mobilemenu_padding: 20;
+$mobilemenu_padding: $padding-base-side/2;
 
 $point-hidemenu: $point-tablet;
 $point-showpannel: $point-desktop-s;
 
+$logo-h: 30;
+$head_top_p: $padding-base/2;
+$head_h: $logo-h + $head_top_p*2;
+
 
 /*======== HEADER BASIC =========*/
+
 header[role='banner']{
   position: relative;
-  @include rem('padding', $padding-base, 0);
+
+  &.screen{
+    // background-color: $c-gray-dark;
+    // background-image: image-url('pattern_drone.svg');
+    // background-size: 200%;
+    // background-position: 50% 50%;
+
+    position: relative;
+    overflow: hidden;
+
+    & > *{
+      @include rem('padding-top', $head_h);
+    }
+
+    & > *{
+      position: relative;
+      z-index: 1;
+    }
+
+    &, h1 { color: #fff; }
+
+
+    &:after{
+      content: "";
+      background-color: rgba(#000, .25);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    #header-dronesback{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.inside header[role='banner']{
+  @include rem('min-height', $head_h);
+}
+
+
+
+
+
+
+#head-logo{
+  img{
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+
+#header-top{
+
+  @include rem('padding', $head_top_p, 0);
   background-color: #fff;
   border-bottom: 1px solid $c-gray-2;
 
-  #head-logo{
-    @include rem('width', 130);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+
+
+   #head-logo{
+    @include rem('height', $logo-h);
   }
 
   
@@ -29,7 +105,6 @@ header[role='banner']{
 
   nav{
 
-    // display: inline-block;
     @include font-size(16);
     text-transform: uppercase;
 
@@ -68,7 +143,6 @@ header[role='banner']{
       display: none;
     }
   }
-
   
   #headnav:checked{
 
@@ -142,11 +216,15 @@ header[role='banner']{
     #headnav:checked{
 
       & + label{
+        color: #fff;
         border: 0;
         position: absolute;
-        @include rem('top', $padding-base);
+        @include rem('top', $padding-base/2);
         @include rem('right', $padding-base-side);
-        color: #fff;
+
+        @include mobile(){
+          @include rem('right', $padding-base-side/2);
+        }
       }
 
 
@@ -155,6 +233,10 @@ header[role='banner']{
         right: 0;
         @include rem('padding-top', $mobilemenu_padding);
         @include rem('padding-right', $menutoggler_size + $padding-base-side + $mobilemenu_padding);
+
+        @include mobile(){
+          @include rem('padding-right', $menutoggler_size + $padding-base-side/2 + $mobilemenu_padding);
+        }
         
         text-align: left;
 
@@ -175,18 +257,11 @@ header[role='banner']{
     }
   }
 
-
-
 }
 
 
 
-#head-logo{
-  img{
-    display: block;
-    max-width: 100%;
-  }
-}
+
 
 
 /*======== HEADER INDEX =========*/
@@ -203,4 +278,85 @@ header[role='banner']{
   {
     max-height: 410px;
   }
+}
+
+
+$c_r: 8px;
+
+
+#index-banner{
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: $c_r/2;
+
+  .flexcols{
+    position: relative;
+    color: $c-gray-light;
+    @include font-size(18, 1.2);
+  }
+
+  .flexcols-i{
+
+    position: relative;
+    text-align: center;
+    border-bottom: 1px solid $c-gray-4;
+
+
+    &:after{
+      content: "";
+      width: 0;
+      height: 0;
+      border-top: 4px solid transparent;
+      border-left: 8px solid $c-gray-4;
+      border-bottom: 4px solid transparent;
+
+      position: absolute;
+      bottom: -4px;
+      right: 0;
+    }
+
+  }
+
+  .circle {
+    display: inline-block;
+    vertical-align: top;
+
+    width: $c_r;
+    height: $c_r;
+    background: $c-gray-4;
+    border-radius: $c_r/2;
+
+    margin-left: 2px;
+
+    &:first-child{
+      margin-left: 0;
+    }
+  }
+
+  #index-banner_decor-1, #index-banner_decor-2{
+    height: $c_r;
+    position: absolute;
+    bottom: - $c_r/2 + 0.5;
+
+     @include max_tablet(){
+      display: none;
+    }
+  }
+
+  #index-banner_decor-1{
+    left: - $c_r - 6;
+  }
+
+  #index-banner_decor-2{
+    right: - $c_r*3 - 2*2 - 10 - 8;
+  }
+
+
+
+}
+
+
+.index-banner_content{
+  @include rem('padding', 0, 20, 20);
+  font-weight: 100;
 }

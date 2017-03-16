@@ -14,6 +14,7 @@
 @import "blocks/forms";
 @import "blocks/header";
 @import "blocks/footer";
+@import "blocks/animation";
 
 
 /*======== MAIN SCSS VARIABLES & MIXINS & EXTENDS =========*/
@@ -21,22 +22,28 @@
 
 /*======== BASIC STYLES =========*/
 
+
+html, body{
+  height: 100%;
+  min-height: 100%;
+}
+
 body {
   background-color: #f3f3f3;
   position: relative;
 
    //for footer at bottom
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+  // display: flex;
+  // min-height: 100vh;
+  // flex-direction: column;
 }
 
 main[role="main"]{
-  @include rem('padding-bottom', $padding-base-side*2); 
+  @include rem('padding-bottom', $padding-base-side*4); 
   position: relative;
 
   //for footer at bottom
-  flex: 1;
+  // flex: 1;
 }
 
 body:not([class *= 'home']){
@@ -50,6 +57,10 @@ body:not([class *= 'home']){
   @include rem('margin-bottom', $vertical-rythm*2);
   background-color: #fff;
   border: 1px solid $c-gray-1;
+  box-sizing: border-box;
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
 
   &:last-child{
     margin-bottom: 0;
@@ -95,43 +106,6 @@ body:not([class *= 'home']){
 
 
 
-
-// .grid{
-//   // @extend %inlineBlock-fix;
-//   display: flex;
-
-//   @include mobile(){
-//     display: block;
-//   }
-// }
-
-// .grid-3, .grid-4{
-//   @extend %font_base;
-//   // display: inline-block;
-//   width: floor(100%/3);
-//   vertical-align: top;
-//   box-sizing: border-box;
-
-//   padding-left: 5%;
-
-//   &:nth-child(3n+1){
-//     padding-left: 0;
-//   }
-
-//   @include mobile(){
-//     width: 100%;
-//     padding-left: 0;
-//     padding-right: 0;
-//     display: block;
-//     @include rem('margin-bottom', $vertical-rythm);
-//   }
-// }
-
-// .grid-4{
-//   width: floor(100%/4);
-// }
-
-
 .flexcols{
   display: flex;
   flex-flow: row wrap;
@@ -152,7 +126,7 @@ body:not([class *= 'home']){
     }
 
     .flexcols-i{
-      @include rem('margin-bottom', $vertical-rythm);
+      @include rem('margin-bottom', $vertical-rythm*2);
 
       &:last-child{
         margin-bottom: 0;
@@ -174,6 +148,17 @@ body:not([class *= 'home']){
   }
 }
 
+
+
+
+.screen{
+  position: relative;
+  box-sizing: border-box;
+  @include rem('padding-top', $vertical-rythm*3);
+  @include rem('padding-bottom', $vertical-rythm*3);
+  min-height: 100%;
+  @extend %flex_align_v;
+}
 
 /*======== END BASIC STYLES =========*/
 
@@ -258,228 +243,6 @@ body:not([class *= 'home']){
   }
 }
 
-
-
-
-
-
-/*------- ELEMENTS - TABLES --------*/
-// table{
-//   @extend %m_b_base3;
-
-//   td, th {
-//     padding: 10px 0 10px 20px;
-//     vertical-align: top;
-   
-//     &:first-child{
-//       padding-left: 0;
-//     }
-//   }
-
-//   th {
-//     padding-bottom: 5px;
-//   }
-
-//   tbody{
-//     tr{
-//       &:last-child td{
-//         border-bottom: 0;
-//       }
-
-//       &:hover{
-//         td { 
-//           border-color: $color-table-border_hov; 
-//         }
-
-//         &.table-header td { 
-//           background-color: transparent; 
-//           border-color: $color-table-head;
-//         }
-//       }
-//     }
-
-//     td, .tr-b-b td {
-//       border-bottom: 2px solid $color-table-border;
-//     }
-//   }
-
-//   th, .table-header td, tfoot td {
-//     text-align: left;
-//     font-family: $font-family-second;
-//     border-width: 0 0 2px;
-//     border-style: solid;
-//     border-color: $color-base;
-//     font-weight: bold;
-//   }
-
-//   th{
-//     padding-top: 0;
-//   }
-
-//   tfoot td{
-//     @include font-size(12);
-//     font-family: $font-family-base;
-//     border-width: 2px 0 0;
-//     font-weight: normal;
-//   }
-
-//   .table-header td{
-//     border-width: 2px 0;
-//     border-width: 2px 0 !important;
-//   }
-
-//   &.table-nohov{
-//     tbody tr:hover{
-//       td { 
-//         border-color: $color-table-border; 
-//         background-color: transparent;
-//       }
-//     }
-
-//     .table-header:hover td{
-//       border-color: $color-table-head;
-//       background-color: transparent;
-//     }
-//   }
-
-//   &.table-clear{
-//     td, tr:hover td{
-//       padding: 4px 0 4px 15px;
-   
-//       &:first-child{
-//         padding-left: 0;
-//       }
-
-//       &, &:hover{
-//         background: none;
-//         border: none;
-//       }
-//     }
-//   }
-
-//   @include mobile(){
-//     &.table-responsive{
-//       thead{
-//         display: none;
-//       }
-
-//       tbody{
-//         td{
-//           display: block;
-//           width: 100%;
-//           border: 0;
-//           padding: 5px 0 0;
-
-//           &:before {
-//             content: attr(data-th) '\00a0';
-//             font-weight: bold;
-//             color: $color-table-head;
-//             display: inline-block;
-//             margin-bottom: 5px;
-//             // width: 28%;
-//             // margin-right: 10px;
-//             vertical-align: middle;
-//           }
-//         }
-
-//         tr{
-//           td:last-child { 
-//             border-bottom: 1px solid $color-table-border;
-//             padding-bottom: 5px;
-//           }
-//           &:last-child td:last-child { border-bottom: 0; }
-//         }
-//       }
-
-//       .table-header td, tfoot td{
-//         text-align: center;
-//         &:before{
-//           width: 0;
-//         }
-//       }
-//     }
-//   }
-// }
-
-// .thead-fixed{
-//   position: fixed;
-//   top: 0;
-//   background-color: #fff;
-// }
-
-
-
-
-/*------- ELEMENTS PAGING --------*/
-// .b-paging{
-//   @include px-to-rem('margin', $vertical-rythm*3, 0);
-//   @extend %floating-fix;
-//   @include font-size(20);
-//   text-align: center;
-//   font-family: $font-family-second;
-//   padding-left: 1%;
-//   padding-right: 1%;
-
-//   .icon{
-//     &.disabled{
-//       color: $color-gray-3;
-//       cursor: default;
-//     }
-//   }
-
-//   .icon-arrLeft{
-//     float: left;
-//   }
-
-//   .icon-arrRight{
-//     float: right;
-//   }
-
-//   a, span{
-//     margin-left: 15px;
-
-//     &:first-child{
-//       margin-left: 0;
-//     }
-//   }
-
-//   a{
-//     &:hover { 
-//       text-decoration: none; 
-//       color: $color-blue-dark;
-//     }
-//   }
-
-//   span, .active{
-//     &, &:hover { color: $color-gray-4; }
-//     cursor: default;
-//   }
-
-//   .active{ 
-//     color: $color-text;
-//   }
-
-//   .b-paging_in{
-//     margin: 0 auto;
-//   }
-
-//   @include screen_max_360(){
-//       .b-paging_in{
-//         display: none;
-//       }
-
-//       .icon{
-//         @include font-size(40);
-//       }
-//     }
-// }
-
-// .b-paging-inf{
-//   margin-bottom: 4px;
-// }
-
-
-
 /*======== END OF ELEMENTS =========*/
 
 
@@ -488,106 +251,24 @@ body:not([class *= 'home']){
 
 /*======== PAGE INDEX =========*/
 
-$arrow-grayFigured: map-get($icons, 'arrow-grayFigured');
-$arrow-grayDashed: map-get($icons, 'arrow-grayDashed');
-
-
-#index-banner{
-  // background-color: $c-gray-dark;
-
-  position: relative;
-  @include rem('margin-bottom', $padding-base-side*2);
-
-  &:after{
-    content: "";
-    background-color: $c-gray-dark;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 15%;
-    z-index: 0;
-  }
-
-  *{
-    position: relative;
-    z-index: 1;
-  }
-
-  &, h1 { color: #fff; }
+#index-targets{
+  
+  @include rem('margin', $padding-base-side*3, 0);
+  @include rem('font-size', 18);
 
   .flexcols-i{
+    margin-left: 4%;
 
-    padding-left: map-get($arrow-grayDashed, width);
-   
-    @include max_tablet(){
-      padding-left: 0;
-    }
-
-  }
-}
-
-
-#index-banner_text{
-  @include rem('padding', $padding-base-side*2, 0, $padding-base-side);
-
-
-  .flexcols{
-    position: relative;
-    color: $c-gray-light;
-
-    &:before{
-      content:"";
-      @include get-sprite('arrow-grayFigured');
-      display: inline-block;
-      position: absolute;
-      top: - map-get($arrow-grayFigured, height);
-      left: - map-get($arrow-grayFigured, width) + map-get($arrow-grayDashed, width);
+    &:first-child {
+      margin-left: 0;
     }
 
     @include max_tablet(){
-      &:before{
-        display: none;
-      }
+      margin-left: 0;
     }
   }
 
-  .flexcols-i{
 
-    overflow: hidden;
-    position: relative;
-    background-color: $c-gray-dark;
-    padding-right: 10px;
-
-    &:before{
-      content:"";
-      @include get-sprite('arrow-grayDashed');
-      display: inline-block;
-      position: absolute;
-      top: 50%;
-      left: - 20px;
-    
-      margin-top: - map-get($arrow-grayDashed, height)/2;
-    }
-
-    &:nth-child(3n+1){
-
-      &:before{
-        display: none;
-      }
-    }
-
-    @include max_tablet(){
-
-      &:before{
-        display: none;
-      }
-    }
-
-  }
-}
-
-#index-banner_usage{
   a{
     
     &, span { display: block; }
@@ -597,14 +278,13 @@ $arrow-grayDashed: map-get($icons, 'arrow-grayDashed');
     border: 2px solid $c-blue;
     transition: 0.2s ease-out all;
 
-    font-family: $font-family-second;
     text-align: center;
 
     @extend %link_noline;
 
     &:hover{
-      background-color: $c-red;
-      border-color: $c-red;
+      background-color: $c-gray-dark;
+      border-color: $c-gray-dark;
     }
 
     .usage-text{
@@ -620,7 +300,119 @@ $arrow-grayDashed: map-get($icons, 'arrow-grayDashed');
       background-size: cover;
     }
   }
+
 }
+
+
+#index-promotions{
+  overflow: hidden;
+
+  h2{
+    @include rem('margin-bottom', $padding-base-side*1.5);
+  }
+}
+
+#index-promotions_frame{
+  @include rem('max-width', 250);
+  @include rem('padding', $padding-base-side*2, $padding-base-side*1.5, $padding-base-side*2, $padding-base-side);
+  border: 1px solid $c-gray-4;
+  box-sizing: border-box;
+  width: 35%;
+
+  @include font-size(18, 1.5);
+  font-weight: lighter;
+
+  display: table-cell;
+  vertical-align: middle;
+
+  @include max_tablet(){
+    width: 50%;
+    @include rem('padding', $padding-base-side/2, $padding-base-side);
+  }
+
+  @include mobile(){
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    border-width: 0;
+    padding: 0 0 20px;
+    @include rem('margin-bottom', $padding-base-side);
+  }
+}
+
+
+#index-promotions_text{
+  display: table-cell;
+  vertical-align: middle;
+
+  position: relative;
+  left: -3%;
+
+  @include mobile(){
+    display: block;
+    left: 0;
+  }
+
+  h4{
+    @include rem('margin-bottom', 4);
+    text-align: left;
+    padding-bottom: 4px;
+    position: relative;
+  }  
+
+  h4, p {
+    padding-left: 9%;
+  }
+
+  .line{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: -1000px;
+    height: 1px;
+    background-color: $c-blue;
+
+    @include mobile(){
+      left: 10px;
+    }
+  }
+
+
+  .circle{
+    width: 20px;
+    height: 20px;
+
+    position: absolute;
+    bottom: -10px;
+    left: -10px;
+
+    &:before, &:after{
+      content: "";
+      background-color: $c-blue;
+      display: block;
+    }
+
+    &:before{
+      width: 20px;
+      height: 20px;
+      border-radius: 10px;
+      opacity: .5;
+    }
+
+
+    &:after{
+      width: 12px;
+      height: 12px;
+      border-radius: 6px;
+      
+      position: absolute;
+      top: 4px;
+      left: 4px;
+    }
+  }
+}
+
+
 
 /*======== END OF PAGE INDEX =========*/
 
@@ -629,6 +421,12 @@ $arrow-grayDashed: map-get($icons, 'arrow-grayDashed');
 
 
 /*======== PAGES BLOG =========*/
+.blog-post{
+  h3{
+    text-align: left;
+  }
+}
+
 .blog-postinfo{
   @include font-size(12, $scale-small);
   color: $c-gray-5;

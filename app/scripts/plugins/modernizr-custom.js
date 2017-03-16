@@ -1,6 +1,6 @@
 /*!
- * modernizr v3.2.0
- * Build http://modernizr.com/download?-inlinesvg-svg-svgasimg-svgfilters-touchevents-printshiv-dontmin
+ * modernizr v3.3.1
+ * Build https://modernizr.com/download?-cssanimations-flexbox-flexboxtweener-svg-touchevents-setclasses-shiv-dontmin
  *
  * Copyright (c)
  *  Faruk Ates
@@ -39,15 +39,15 @@
 
   var ModernizrProto = {
     // The current version, dummy
-    _version: '3.2.0',
+    _version: '3.3.1',
 
     // Any settings that don't work as separate modules
     // can go in here as configuration.
     _config: {
-      'classPrefix' : '',
-      'enableClasses' : true,
-      'enableJSClass' : true,
-      'usePrefixes' : true
+      'classPrefix': '',
+      'enableClasses': true,
+      'enableJSClass': true,
+      'usePrefixes': true
     },
 
     // Queue of tests
@@ -68,11 +68,11 @@
     },
 
     addTest: function(name, fn, options) {
-      tests.push({name : name, fn : fn, options : options});
+      tests.push({name: name, fn: fn, options: options});
     },
 
     addAsyncTest: function(fn) {
-      tests.push({name : null, fn : fn});
+      tests.push({name: null, fn: fn});
     }
   };
 
@@ -111,32 +111,6 @@ Detects support for SVG in `<embed>` or `<object>` elements.
 */
 
   Modernizr.addTest('svg', !!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect);
-
-/*!
-{
-  "name": "SVG filters",
-  "property": "svgfilters",
-  "caniuse": "svg-filters",
-  "tags": ["svg"],
-  "builderAliases": ["svg_filters"],
-  "authors": ["Erik Dahlstrom"],
-  "notes": [{
-    "name": "W3C Spec",
-    "href": "http://www.w3.org/TR/SVG11/filters.html"
-  }]
-}
-!*/
-
-  // Should fail in Safari: http://stackoverflow.com/questions/9739955/feature-detecting-support-for-svg-filters.
-  Modernizr.addTest('svgfilters', function() {
-    var result = false;
-    try {
-      result = 'SVGFEColorMatrixElement' in window &&
-        SVGFEColorMatrixElement.SVG_FECOLORMATRIX_TYPE_SATURATE == 2;
-    }
-    catch (e) {}
-    return result;
-  });
 
 
   /**
@@ -281,14 +255,13 @@ Detects support for SVG in `<embed>` or `<object>` elements.
   ;
 
 /**
-  * @optionName html5printshiv
-  * @optionProp html5printshiv
+  * @optionName html5shiv
+  * @optionProp html5shiv
   */
 
   // Take the html5 variable out of the html5shiv scope so we can return it.
   var html5;
   if (!isSVG) {
-
     /**
      * @preserve HTML5 Shiv 3.7.3 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed
      */
@@ -412,7 +385,7 @@ Detects support for SVG in `<embed>` or `<object>` elements.
        * returns a shived element for the given nodeName and document
        * @memberOf html5
        * @param {String} nodeName name of the element
-       * @param {Document} ownerDocument The context document.
+       * @param {Document|DocumentFragment} ownerDocument The context document.
        * @returns {Object} The shived element.
        */
       function createElement(nodeName, ownerDocument, data){
@@ -610,212 +583,13 @@ Detects support for SVG in `<embed>` or `<object>` elements.
       // shiv the document
       shivDocument(document);
 
-      /*------------------------------- Print Shiv -------------------------------*/
-
-      /** Used to filter media types */
-      var reMedia = /^$|\b(?:all|print)\b/;
-
-      /** Used to namespace printable elements */
-      var shivNamespace = 'html5shiv';
-
-      /** Detect whether the browser supports shivable style sheets */
-      var supportsShivableSheets = !supportsUnknownElements && (function() {
-        // assign a false negative if unable to shiv
-        var docEl = document.documentElement;
-        return !(
-          typeof document.namespaces == 'undefined' ||
-            typeof document.parentWindow == 'undefined' ||
-            typeof docEl.applyElement == 'undefined' ||
-            typeof docEl.removeNode == 'undefined' ||
-            typeof window.attachEvent == 'undefined'
-        );
-      }());
-
-      /*--------------------------------------------------------------------------*/
-
-      /**
-       * Wraps all HTML5 elements in the given document with printable elements.
-       * (eg. the "header" element is wrapped with the "html5shiv:header" element)
-       * @private
-       * @param {Document} ownerDocument The document.
-       * @returns {Array} An array wrappers added.
-       */
-      function addWrappers(ownerDocument) {
-        var node,
-        nodes = ownerDocument.getElementsByTagName('*'),
-          index = nodes.length,
-          reElements = RegExp('^(?:' + getElements().join('|') + ')$', 'i'),
-          result = [];
-
-        while (index--) {
-          node = nodes[index];
-          if (reElements.test(node.nodeName)) {
-            result.push(node.applyElement(createWrapper(node)));
-          }
-        }
-        return result;
-      }
-
-      /**
-       * Creates a printable wrapper for the given element.
-       * @private
-       * @param {Element} element The element.
-       * @returns {Element} The wrapper.
-       */
-      function createWrapper(element) {
-        var node,
-        nodes = element.attributes,
-          index = nodes.length,
-          wrapper = element.ownerDocument.createElement(shivNamespace + ':' + element.nodeName);
-
-        // copy element attributes to the wrapper
-        while (index--) {
-          node = nodes[index];
-          node.specified && wrapper.setAttribute(node.nodeName, node.nodeValue);
-        }
-        // copy element styles to the wrapper
-        wrapper.style.cssText = element.style.cssText;
-        return wrapper;
-      }
-
-      /**
-       * Shivs the given CSS text.
-       * (eg. header{} becomes html5shiv\:header{})
-       * @private
-       * @param {String} cssText The CSS text to shiv.
-       * @returns {String} The shived CSS text.
-       */
-      function shivCssText(cssText) {
-        var pair,
-        parts = cssText.split('{'),
-          index = parts.length,
-          reElements = RegExp('(^|[\\s,>+~])(' + getElements().join('|') + ')(?=[[\\s,>+~#.:]|$)', 'gi'),
-          replacement = '$1' + shivNamespace + '\\:$2';
-
-        while (index--) {
-          pair = parts[index] = parts[index].split('}');
-          pair[pair.length - 1] = pair[pair.length - 1].replace(reElements, replacement);
-          parts[index] = pair.join('}');
-        }
-        return parts.join('{');
-      }
-
-      /**
-       * Removes the given wrappers, leaving the original elements.
-       * @private
-       * @params {Array} wrappers An array of printable wrappers.
-       */
-      function removeWrappers(wrappers) {
-        var index = wrappers.length;
-        while (index--) {
-          wrappers[index].removeNode();
-        }
-      }
-
-      /*--------------------------------------------------------------------------*/
-
-      /**
-       * Shivs the given document for print.
-       * @memberOf html5
-       * @param {Document} ownerDocument The document to shiv.
-       * @returns {Document} The shived document.
-       */
-      function shivPrint(ownerDocument) {
-        var shivedSheet,
-        wrappers,
-        data = getExpandoData(ownerDocument),
-          namespaces = ownerDocument.namespaces,
-          ownerWindow = ownerDocument.parentWindow;
-
-        if (!supportsShivableSheets || ownerDocument.printShived) {
-          return ownerDocument;
-        }
-        if (typeof namespaces[shivNamespace] == 'undefined') {
-          namespaces.add(shivNamespace);
-        }
-
-        function removeSheet() {
-          clearTimeout(data._removeSheetTimer);
-          if (shivedSheet) {
-            shivedSheet.removeNode(true);
-          }
-          shivedSheet= null;
-        }
-
-        ownerWindow.attachEvent('onbeforeprint', function() {
-
-          removeSheet();
-
-          var imports,
-          length,
-          sheet,
-          collection = ownerDocument.styleSheets,
-            cssText = [],
-            index = collection.length,
-            sheets = Array(index);
-
-          // convert styleSheets collection to an array
-          while (index--) {
-            sheets[index] = collection[index];
-          }
-          // concat all style sheet CSS text
-          while ((sheet = sheets.pop())) {
-            // IE does not enforce a same origin policy for external style sheets...
-            // but has trouble with some dynamically created stylesheets
-            if (!sheet.disabled && reMedia.test(sheet.media)) {
-
-              try {
-                imports = sheet.imports;
-                length = imports.length;
-              } catch(er){
-                length = 0;
-              }
-
-              for (index = 0; index < length; index++) {
-                sheets.push(imports[index]);
-              }
-
-              try {
-                cssText.push(sheet.cssText);
-              } catch(er){}
-            }
-          }
-
-          // wrap all HTML5 elements with printable elements and add the shived style sheet
-          cssText = shivCssText(cssText.reverse().join(''));
-          wrappers = addWrappers(ownerDocument);
-          shivedSheet = addStyleSheet(ownerDocument, cssText);
-
-        });
-
-        ownerWindow.attachEvent('onafterprint', function() {
-          // remove wrappers, leaving the original elements, and remove the shived style sheet
-          removeWrappers(wrappers);
-          clearTimeout(data._removeSheetTimer);
-          data._removeSheetTimer = setTimeout(removeSheet, 500);
-        });
-
-        ownerDocument.printShived = true;
-        return ownerDocument;
-      }
-
-      /*--------------------------------------------------------------------------*/
-
-      // expose API
-      html5.type += ' print';
-      html5.shivPrint = shivPrint;
-
-      // shiv for print
-      shivPrint(document);
-
       if(typeof module == 'object' && module.exports){
         module.exports = html5;
       }
 
     }(typeof window !== "undefined" ? window : this, document));
   }
-
-  ;
+;
 
   /**
    * List of property values to set for css tests. See ticket #21
@@ -849,7 +623,9 @@ Detects support for SVG in `<embed>` or `<object>` elements.
    * ```
    */
 
-  var prefixes = (ModernizrProto._config.usePrefixes ? ' -webkit- -moz- -o- -ms- '.split(' ') : []);
+  // we use ['',''] rather than an empty array in order to allow a pattern of .`join()`ing prefixes to test
+  // values in feature detects to continue to work
+  var prefixes = (ModernizrProto._config.usePrefixes ? ' -webkit- -moz- -o- -ms- '.split(' ') : ['','']);
 
   // expose these for the plugin API. Look in the source for how to join() them against your input
   ModernizrProto._prefixes = prefixes;
@@ -880,303 +656,6 @@ Detects support for SVG in `<embed>` or `<object>` elements.
   }
 
   ;
-/*!
-{
-  "name": "Inline SVG",
-  "property": "inlinesvg",
-  "caniuse": "svg-html5",
-  "tags": ["svg"],
-  "notes": [{
-    "name": "Test page",
-    "href": "http://paulirish.com/demo/inline-svg"
-  }, {
-    "name": "Test page and results",
-    "href": "http://codepen.io/eltonmesquita/full/GgXbvo/"
-  }],
-  "polyfills": ["inline-svg-polyfill"],
-  "knownBugs": ["False negative on some Chromia browsers."]
-}
-!*/
-/* DOC
-Detects support for inline SVG in HTML (not within XHTML).
-*/
-
-  Modernizr.addTest('inlinesvg', function() {
-    var div = createElement('div');
-    div.innerHTML = '<svg/>';
-    return (typeof SVGRect != 'undefined' && div.firstChild && div.firstChild.namespaceURI) == 'http://www.w3.org/2000/svg';
-  });
-
-
-  /**
-   * hasOwnProp is a shim for hasOwnProperty that is needed for Safari 2.0 support
-   *
-   * @author kangax
-   * @access private
-   * @function hasOwnProp
-   * @param {object} object - The object to check for a property
-   * @param {string} property - The property to check for
-   * @returns {boolean}
-   */
-
-  // hasOwnProperty shim by kangax needed for Safari 2.0 support
-  var hasOwnProp;
-
-  (function() {
-    var _hasOwnProperty = ({}).hasOwnProperty;
-    /* istanbul ignore else */
-    /* we have no way of testing IE 5.5 or safari 2,
-     * so just assume the else gets hit */
-    if (!is(_hasOwnProperty, 'undefined') && !is(_hasOwnProperty.call, 'undefined')) {
-      hasOwnProp = function(object, property) {
-        return _hasOwnProperty.call(object, property);
-      };
-    }
-    else {
-      hasOwnProp = function(object, property) { /* yes, this can give false positives/negatives, but most of the time we don't care about those */
-        return ((property in object) && is(object.constructor.prototype[property], 'undefined'));
-      };
-    }
-  })();
-
-  
-
-
-   // _l tracks listeners for async tests, as well as tests that execute after the initial run
-  ModernizrProto._l = {};
-
-  /**
-   * Modernizr.on is a way to listen for the completion of async tests. Being
-   * asynchronous, they may not finish before your scripts run. As a result you
-   * will get a possibly false negative `undefined` value.
-   *
-   * @memberof Modernizr
-   * @name Modernizr.on
-   * @access public
-   * @function on
-   * @param {string} feature - String name of the feature detect
-   * @param {function} cb - Callback function returning a Boolean - true if feature is supported, false if not
-   * @example
-   *
-   * ```js
-   * Modernizr.on('flash', function( result ) {
-   *   if (result) {
-   *    // the browser has flash
-   *   } else {
-   *     // the browser does not have flash
-   *   }
-   * });
-   * ```
-   */
-
-  ModernizrProto.on = function(feature, cb) {
-    // Create the list of listeners if it doesn't exist
-    if (!this._l[feature]) {
-      this._l[feature] = [];
-    }
-
-    // Push this test on to the listener list
-    this._l[feature].push(cb);
-
-    // If it's already been resolved, trigger it on next tick
-    if (Modernizr.hasOwnProperty(feature)) {
-      // Next Tick
-      setTimeout(function() {
-        Modernizr._trigger(feature, Modernizr[feature]);
-      }, 0);
-    }
-  };
-
-  /**
-   * _trigger is the private function used to signal test completion and run any
-   * callbacks registered through [Modernizr.on](#modernizr-on)
-   *
-   * @memberof Modernizr
-   * @name Modernizr._trigger
-   * @access private
-   * @function _trigger
-   * @param {string} feature - string name of the feature detect
-   * @param {function|boolean} [res] - A feature detection function, or the boolean =
-   * result of a feature detection function
-   */
-
-  ModernizrProto._trigger = function(feature, res) {
-    if (!this._l[feature]) {
-      return;
-    }
-
-    var cbs = this._l[feature];
-
-    // Force async
-    setTimeout(function() {
-      var i, cb;
-      for (i = 0; i < cbs.length; i++) {
-        cb = cbs[i];
-        cb(res);
-      }
-    }, 0);
-
-    // Don't trigger these again
-    delete this._l[feature];
-  };
-
-  /**
-   * addTest allows you to define your own feature detects that are not currently
-   * included in Modernizr (under the covers it's the exact same code Modernizr
-   * uses for its own [feature detections](https://github.com/Modernizr/Modernizr/tree/master/feature-detects)). Just like the offical detects, the result
-   * will be added onto the Modernizr object, as well as an appropriate className set on
-   * the html element when configured to do so
-   *
-   * @memberof Modernizr
-   * @name Modernizr.addTest
-   * @optionName Modernizr.addTest()
-   * @optionProp addTest
-   * @access public
-   * @function addTest
-   * @param {string|object} feature - The string name of the feature detect, or an
-   * object of feature detect names and test
-   * @param {function|boolean} test - Function returning true if feature is supported,
-   * false if not. Otherwise a boolean representing the results of a feature detection
-   * @example
-   *
-   * The most common way of creating your own feature detects is by calling
-   * `Modernizr.addTest` with a string (preferably just lowercase, without any
-   * punctuation), and a function you want executed that will return a boolean result
-   *
-   * ```js
-   * Modernizr.addTest('itsTuesday', function() {
-   *  var d = new Date();
-   *  return d.getDay() === 2;
-   * });
-   * ```
-   *
-   * When the above is run, it will set Modernizr.itstuesday to `true` when it is tuesday,
-   * and to `false` every other day of the week. One thing to notice is that the names of
-   * feature detect functions are always lowercased when added to the Modernizr object. That
-   * means that `Modernizr.itsTuesday` will not exist, but `Modernizr.itstuesday` will.
-   *
-   *
-   *  Since we only look at the returned value from any feature detection function,
-   *  you do not need to actually use a function. For simple detections, just passing
-   *  in a statement that will return a boolean value works just fine.
-   *
-   * ```js
-   * Modernizr.addTest('hasJquery', 'jQuery' in window);
-   * ```
-   *
-   * Just like before, when the above runs `Modernizr.hasjquery` will be true if
-   * jQuery has been included on the page. Not using a function saves a small amount
-   * of overhead for the browser, as well as making your code much more readable.
-   *
-   * Finally, you also have the ability to pass in an object of feature names and
-   * their tests. This is handy if you want to add multiple detections in one go.
-   * The keys should always be a string, and the value can be either a boolean or
-   * function that returns a boolean.
-   *
-   * ```js
-   * var detects = {
-   *  'hasjquery': 'jQuery' in window,
-   *  'itstuesday': function() {
-   *    var d = new Date();
-   *    return d.getDay() === 2;
-   *  }
-   * }
-   *
-   * Modernizr.addTest(detects);
-   * ```
-   *
-   * There is really no difference between the first methods and this one, it is
-   * just a convenience to let you write more readable code.
-   */
-
-  function addTest(feature, test) {
-
-    if (typeof feature == 'object') {
-      for (var key in feature) {
-        if (hasOwnProp(feature, key)) {
-          addTest(key, feature[ key ]);
-        }
-      }
-    } else {
-
-      feature = feature.toLowerCase();
-      var featureNameSplit = feature.split('.');
-      var last = Modernizr[featureNameSplit[0]];
-
-      // Again, we don't check for parent test existence. Get that right, though.
-      if (featureNameSplit.length == 2) {
-        last = last[featureNameSplit[1]];
-      }
-
-      if (typeof last != 'undefined') {
-        // we're going to quit if you're trying to overwrite an existing test
-        // if we were to allow it, we'd do this:
-        //   var re = new RegExp("\\b(no-)?" + feature + "\\b");
-        //   docElement.className = docElement.className.replace( re, '' );
-        // but, no rly, stuff 'em.
-        return Modernizr;
-      }
-
-      test = typeof test == 'function' ? test() : test;
-
-      // Set the value (this is the magic, right here).
-      if (featureNameSplit.length == 1) {
-        Modernizr[featureNameSplit[0]] = test;
-      } else {
-        // cast to a Boolean, if not one already
-        /* jshint -W053 */
-        if (Modernizr[featureNameSplit[0]] && !(Modernizr[featureNameSplit[0]] instanceof Boolean)) {
-          Modernizr[featureNameSplit[0]] = new Boolean(Modernizr[featureNameSplit[0]]);
-        }
-
-        Modernizr[featureNameSplit[0]][featureNameSplit[1]] = test;
-      }
-
-      // Set a single class (either `feature` or `no-feature`)
-      /* jshint -W041 */
-      setClasses([(!!test && test != false ? '' : 'no-') + featureNameSplit.join('-')]);
-      /* jshint +W041 */
-
-      // Trigger the event
-      Modernizr._trigger(feature, test);
-    }
-
-    return Modernizr; // allow chaining.
-  }
-
-  // After all the tests are run, add self to the Modernizr prototype
-  Modernizr._q.push(function() {
-    ModernizrProto.addTest = addTest;
-  });
-
-  
-
-/*!
-{
-  "name": "SVG as an <img> tag source",
-  "property": "svgasimg",
-  "caniuse" : "svg-img",
-  "tags": ["svg"],
-  "authors": ["Chris Coyier"],
-  "notes": [{
-    "name": "HTML5 Spec",
-    "href": "http://www.w3.org/TR/html5/embedded-content-0.html#the-img-element"
-  }]
-}
-!*/
-
-
-  // Original Async test by Stu Cox
-  // https://gist.github.com/chriscoyier/8774501
-
-  // Now a Sync test based on good results here
-  // http://codepen.io/chriscoyier/pen/bADFx
-
-  // Note http://www.w3.org/TR/SVG11/feature#Image is *supposed* to represent
-  // support for the `<image>` tag in SVG, not an SVG file linked from an `<img>`
-  // tag in HTML – but it’s a heuristic which works
-  Modernizr.addTest('svgasimg', document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#Image', '1.1'));
-
 
   /**
    * getBody returns the body of a document, or an element that can stand in for
@@ -1344,7 +823,7 @@ Detects support for inline SVG in HTML (not within XHTML).
   "tags": ["media", "attribute"],
   "notes": [{
     "name": "Touch Events spec",
-    "href": "http://www.w3.org/TR/2013/WD-touch-events-20130124/"
+    "href": "https://www.w3.org/TR/2013/WD-touch-events-20130124/"
   }],
   "warnings": [
     "Indicates if the browser supports the Touch Events spec, and does not necessarily reflect a touchscreen device"
@@ -1378,6 +857,8 @@ This test will also return `true` for Firefox 4 Multitouch support.
     if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
       bool = true;
     } else {
+      // include the 'heartz' as a way to have a non matching MQ to help terminate the join
+      // https://git.io/vznFH
       var query = ['@media (', prefixes.join('touch-enabled),('), 'heartz', ')', '{#modernizr{top:9px;position:absolute}}'].join('');
       testStyles(query, function(node) {
         bool = node.offsetTop === 9;
@@ -1385,6 +866,461 @@ This test will also return `true` for Firefox 4 Multitouch support.
     }
     return bool;
   });
+
+
+  /**
+   * If the browsers follow the spec, then they would expose vendor-specific style as:
+   *   elem.style.WebkitBorderRadius
+   * instead of something like the following, which would be technically incorrect:
+   *   elem.style.webkitBorderRadius
+
+   * Webkit ghosts their properties in lowercase but Opera & Moz do not.
+   * Microsoft uses a lowercase `ms` instead of the correct `Ms` in IE8+
+   *   erik.eae.net/archives/2008/03/10/21.48.10/
+
+   * More here: github.com/Modernizr/Modernizr/issues/issue/21
+   *
+   * @access private
+   * @returns {string} The string representing the vendor-specific style properties
+   */
+
+  var omPrefixes = 'Moz O ms Webkit';
+  
+
+  var cssomPrefixes = (ModernizrProto._config.usePrefixes ? omPrefixes.split(' ') : []);
+  ModernizrProto._cssomPrefixes = cssomPrefixes;
+  
+
+  /**
+   * List of JavaScript DOM values used for tests
+   *
+   * @memberof Modernizr
+   * @name Modernizr._domPrefixes
+   * @optionName Modernizr._domPrefixes
+   * @optionProp domPrefixes
+   * @access public
+   * @example
+   *
+   * Modernizr._domPrefixes is exactly the same as [_prefixes](#modernizr-_prefixes), but rather
+   * than kebab-case properties, all properties are their Capitalized variant
+   *
+   * ```js
+   * Modernizr._domPrefixes === [ "Moz", "O", "ms", "Webkit" ];
+   * ```
+   */
+
+  var domPrefixes = (ModernizrProto._config.usePrefixes ? omPrefixes.toLowerCase().split(' ') : []);
+  ModernizrProto._domPrefixes = domPrefixes;
+  
+
+
+  /**
+   * contains checks to see if a string contains another string
+   *
+   * @access private
+   * @function contains
+   * @param {string} str - The string we want to check for substrings
+   * @param {string} substr - The substring we want to search the first string for
+   * @returns {boolean}
+   */
+
+  function contains(str, substr) {
+    return !!~('' + str).indexOf(substr);
+  }
+
+  ;
+
+  /**
+   * cssToDOM takes a kebab-case string and converts it to camelCase
+   * e.g. box-sizing -> boxSizing
+   *
+   * @access private
+   * @function cssToDOM
+   * @param {string} name - String name of kebab-case prop we want to convert
+   * @returns {string} The camelCase version of the supplied name
+   */
+
+  function cssToDOM(name) {
+    return name.replace(/([a-z])-([a-z])/g, function(str, m1, m2) {
+      return m1 + m2.toUpperCase();
+    }).replace(/^-/, '');
+  }
+  ;
+
+  /**
+   * fnBind is a super small [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) polyfill.
+   *
+   * @access private
+   * @function fnBind
+   * @param {function} fn - a function you want to change `this` reference to
+   * @param {object} that - the `this` you want to call the function with
+   * @returns {function} The wrapped version of the supplied function
+   */
+
+  function fnBind(fn, that) {
+    return function() {
+      return fn.apply(that, arguments);
+    };
+  }
+
+  ;
+
+  /**
+   * testDOMProps is a generic DOM property test; if a browser supports
+   *   a certain property, it won't return undefined for it.
+   *
+   * @access private
+   * @function testDOMProps
+   * @param {array.<string>} props - An array of properties to test for
+   * @param {object} obj - An object or Element you want to use to test the parameters again
+   * @param {boolean|object} elem - An Element to bind the property lookup again. Use `false` to prevent the check
+   */
+  function testDOMProps(props, obj, elem) {
+    var item;
+
+    for (var i in props) {
+      if (props[i] in obj) {
+
+        // return the property name as a string
+        if (elem === false) {
+          return props[i];
+        }
+
+        item = obj[props[i]];
+
+        // let's bind a function
+        if (is(item, 'function')) {
+          // bind to obj unless overriden
+          return fnBind(item, elem || obj);
+        }
+
+        // return the unbound function or obj or value
+        return item;
+      }
+    }
+    return false;
+  }
+
+  ;
+
+  /**
+   * Create our "modernizr" element that we do most feature tests on.
+   *
+   * @access private
+   */
+
+  var modElem = {
+    elem: createElement('modernizr')
+  };
+
+  // Clean up this element
+  Modernizr._q.push(function() {
+    delete modElem.elem;
+  });
+
+  
+
+  var mStyle = {
+    style: modElem.elem.style
+  };
+
+  // kill ref for gc, must happen before mod.elem is removed, so we unshift on to
+  // the front of the queue.
+  Modernizr._q.unshift(function() {
+    delete mStyle.style;
+  });
+
+  
+
+  /**
+   * domToCSS takes a camelCase string and converts it to kebab-case
+   * e.g. boxSizing -> box-sizing
+   *
+   * @access private
+   * @function domToCSS
+   * @param {string} name - String name of camelCase prop we want to convert
+   * @returns {string} The kebab-case version of the supplied name
+   */
+
+  function domToCSS(name) {
+    return name.replace(/([A-Z])/g, function(str, m1) {
+      return '-' + m1.toLowerCase();
+    }).replace(/^ms-/, '-ms-');
+  }
+  ;
+
+  /**
+   * nativeTestProps allows for us to use native feature detection functionality if available.
+   * some prefixed form, or false, in the case of an unsupported rule
+   *
+   * @access private
+   * @function nativeTestProps
+   * @param {array} props - An array of property names
+   * @param {string} value - A string representing the value we want to check via @supports
+   * @returns {boolean|undefined} A boolean when @supports exists, undefined otherwise
+   */
+
+  // Accepts a list of property names and a single value
+  // Returns `undefined` if native detection not available
+  function nativeTestProps(props, value) {
+    var i = props.length;
+    // Start with the JS API: http://www.w3.org/TR/css3-conditional/#the-css-interface
+    if ('CSS' in window && 'supports' in window.CSS) {
+      // Try every prefixed variant of the property
+      while (i--) {
+        if (window.CSS.supports(domToCSS(props[i]), value)) {
+          return true;
+        }
+      }
+      return false;
+    }
+    // Otherwise fall back to at-rule (for Opera 12.x)
+    else if ('CSSSupportsRule' in window) {
+      // Build a condition string for every prefixed variant
+      var conditionText = [];
+      while (i--) {
+        conditionText.push('(' + domToCSS(props[i]) + ':' + value + ')');
+      }
+      conditionText = conditionText.join(' or ');
+      return injectElementWithStyles('@supports (' + conditionText + ') { #modernizr { position: absolute; } }', function(node) {
+        return getComputedStyle(node, null).position == 'absolute';
+      });
+    }
+    return undefined;
+  }
+  ;
+
+  // testProps is a generic CSS / DOM property test.
+
+  // In testing support for a given CSS property, it's legit to test:
+  //    `elem.style[styleName] !== undefined`
+  // If the property is supported it will return an empty string,
+  // if unsupported it will return undefined.
+
+  // We'll take advantage of this quick test and skip setting a style
+  // on our modernizr element, but instead just testing undefined vs
+  // empty string.
+
+  // Property names can be provided in either camelCase or kebab-case.
+
+  function testProps(props, prefixed, value, skipValueTest) {
+    skipValueTest = is(skipValueTest, 'undefined') ? false : skipValueTest;
+
+    // Try native detect first
+    if (!is(value, 'undefined')) {
+      var result = nativeTestProps(props, value);
+      if (!is(result, 'undefined')) {
+        return result;
+      }
+    }
+
+    // Otherwise do it properly
+    var afterInit, i, propsLength, prop, before;
+
+    // If we don't have a style element, that means we're running async or after
+    // the core tests, so we'll need to create our own elements to use
+
+    // inside of an SVG element, in certain browsers, the `style` element is only
+    // defined for valid tags. Therefore, if `modernizr` does not have one, we
+    // fall back to a less used element and hope for the best.
+    // for strict XHTML browsers the hardly used samp element is used
+    var elems = ['modernizr', 'tspan', 'samp'];
+    while (!mStyle.style && elems.length) {
+      afterInit = true;
+      mStyle.modElem = createElement(elems.shift());
+      mStyle.style = mStyle.modElem.style;
+    }
+
+    // Delete the objects if we created them.
+    function cleanElems() {
+      if (afterInit) {
+        delete mStyle.style;
+        delete mStyle.modElem;
+      }
+    }
+
+    propsLength = props.length;
+    for (i = 0; i < propsLength; i++) {
+      prop = props[i];
+      before = mStyle.style[prop];
+
+      if (contains(prop, '-')) {
+        prop = cssToDOM(prop);
+      }
+
+      if (mStyle.style[prop] !== undefined) {
+
+        // If value to test has been passed in, do a set-and-check test.
+        // 0 (integer) is a valid property value, so check that `value` isn't
+        // undefined, rather than just checking it's truthy.
+        if (!skipValueTest && !is(value, 'undefined')) {
+
+          // Needs a try catch block because of old IE. This is slow, but will
+          // be avoided in most cases because `skipValueTest` will be used.
+          try {
+            mStyle.style[prop] = value;
+          } catch (e) {}
+
+          // If the property value has changed, we assume the value used is
+          // supported. If `value` is empty string, it'll fail here (because
+          // it hasn't changed), which matches how browsers have implemented
+          // CSS.supports()
+          if (mStyle.style[prop] != before) {
+            cleanElems();
+            return prefixed == 'pfx' ? prop : true;
+          }
+        }
+        // Otherwise just return true, or the property name if this is a
+        // `prefixed()` call
+        else {
+          cleanElems();
+          return prefixed == 'pfx' ? prop : true;
+        }
+      }
+    }
+    cleanElems();
+    return false;
+  }
+
+  ;
+
+  /**
+   * testPropsAll tests a list of DOM properties we want to check against.
+   * We specify literally ALL possible (known and/or likely) properties on
+   * the element including the non-vendor prefixed one, for forward-
+   * compatibility.
+   *
+   * @access private
+   * @function testPropsAll
+   * @param {string} prop - A string of the property to test for
+   * @param {string|object} [prefixed] - An object to check the prefixed properties on. Use a string to skip
+   * @param {HTMLElement|SVGElement} [elem] - An element used to test the property and value against
+   * @param {string} [value] - A string of a css value
+   * @param {boolean} [skipValueTest] - An boolean representing if you want to test if value sticks when set
+   */
+  function testPropsAll(prop, prefixed, elem, value, skipValueTest) {
+
+    var ucProp = prop.charAt(0).toUpperCase() + prop.slice(1),
+    props = (prop + ' ' + cssomPrefixes.join(ucProp + ' ') + ucProp).split(' ');
+
+    // did they call .prefixed('boxSizing') or are we just testing a prop?
+    if (is(prefixed, 'string') || is(prefixed, 'undefined')) {
+      return testProps(props, prefixed, value, skipValueTest);
+
+      // otherwise, they called .prefixed('requestAnimationFrame', window[, elem])
+    } else {
+      props = (prop + ' ' + (domPrefixes).join(ucProp + ' ') + ucProp).split(' ');
+      return testDOMProps(props, prefixed, elem);
+    }
+  }
+
+  // Modernizr.testAllProps() investigates whether a given style property,
+  // or any of its vendor-prefixed variants, is recognized
+  //
+  // Note that the property names must be provided in the camelCase variant.
+  // Modernizr.testAllProps('boxSizing')
+  ModernizrProto.testAllProps = testPropsAll;
+
+  
+
+  /**
+   * testAllProps determines whether a given CSS property is supported in the browser
+   *
+   * @memberof Modernizr
+   * @name Modernizr.testAllProps
+   * @optionName Modernizr.testAllProps()
+   * @optionProp testAllProps
+   * @access public
+   * @function testAllProps
+   * @param {string} prop - String naming the property to test (either camelCase or kebab-case)
+   * @param {string} [value] - String of the value to test
+   * @param {boolean} [skipValueTest=false] - Whether to skip testing that the value is supported when using non-native detection
+   * @example
+   *
+   * testAllProps determines whether a given CSS property, in some prefixed form,
+   * is supported by the browser.
+   *
+   * ```js
+   * testAllProps('boxSizing')  // true
+   * ```
+   *
+   * It can optionally be given a CSS value in string form to test if a property
+   * value is valid
+   *
+   * ```js
+   * testAllProps('display', 'block') // true
+   * testAllProps('display', 'penguin') // false
+   * ```
+   *
+   * A boolean can be passed as a third parameter to skip the value check when
+   * native detection (@supports) isn't available.
+   *
+   * ```js
+   * testAllProps('shapeOutside', 'content-box', true);
+   * ```
+   */
+
+  function testAllProps(prop, value, skipValueTest) {
+    return testPropsAll(prop, undefined, undefined, value, skipValueTest);
+  }
+  ModernizrProto.testAllProps = testAllProps;
+  
+/*!
+{
+  "name": "CSS Animations",
+  "property": "cssanimations",
+  "caniuse": "css-animation",
+  "polyfills": ["transformie", "csssandpaper"],
+  "tags": ["css"],
+  "warnings": ["Android < 4 will pass this test, but can only animate a single property at a time"],
+  "notes": [{
+    "name" : "Article: 'Dispelling the Android CSS animation myths'",
+    "href": "https://goo.gl/OGw5Gm"
+  }]
+}
+!*/
+/* DOC
+Detects whether or not elements can be animated using CSS
+*/
+
+  Modernizr.addTest('cssanimations', testAllProps('animationName', 'a', true));
+
+/*!
+{
+  "name": "Flexbox",
+  "property": "flexbox",
+  "caniuse": "flexbox",
+  "tags": ["css"],
+  "notes": [{
+    "name": "The _new_ flexbox",
+    "href": "http://dev.w3.org/csswg/css3-flexbox"
+  }],
+  "warnings": [
+    "A `true` result for this detect does not imply that the `flex-wrap` property is supported; see the `flexwrap` detect."
+  ]
+}
+!*/
+/* DOC
+Detects support for the Flexible Box Layout model, a.k.a. Flexbox, which allows easy manipulation of layout order and sizing within a container.
+*/
+
+  Modernizr.addTest('flexbox', testAllProps('flexBasis', '1px', true));
+
+/*!
+{
+  "name": "Flexbox (tweener)",
+  "property": "flexboxtweener",
+  "tags": ["css"],
+  "polyfills": ["flexie"],
+  "notes": [{
+    "name": "The _inbetween_ flexbox",
+    "href": "https://www.w3.org/TR/2011/WD-css3-flexbox-20111129/"
+  }],
+  "warnings": ["This represents an old syntax, not the latest standard syntax."]
+}
+!*/
+
+  Modernizr.addTest('flexboxtweener', testAllProps('flexAlign', 'end', true));
 
 
   // Run each test

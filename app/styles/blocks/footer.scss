@@ -11,7 +11,6 @@ footer[role='contentinfo']{
 
 
 .footer-sec{
-	// @extend %floating-fix;
 	@include rem('padding-top', $padding-base/2 );
 	@include rem('padding-bottom', $padding-base/2);
 }
@@ -19,77 +18,213 @@ footer[role='contentinfo']{
 
 
 
+
+
+/* FOOTER - COLUMNS STEPS */
+$media_hidedrone: $point-tablet;
+$media_hidearrows: $point-mobile;
+
 #footer-steps{
 	background-color: $c-gray-dark;
 	color: #fff;
-	text-align: left;
+	position: relative;
 
-	@include rem('padding-top', $padding-base-side);
-	@include rem('padding-bottom', $padding-base-side);
+	@include rem('padding-top', $padding-base-side*1.5);
+	@include rem('padding-bottom', $padding-base-side*1.5);
 
-	.setw { position: relative; }
+	text-align: center;
 
-	#footer-dec{
-		position: absolute;
-		top: -144px;
-		left: -62px;
-
-		@media screen and (max-width: #{$width-base-max + $padding-base-side*2}){
-			display: none;
-		}
+	h3, #footer-steps_c{
+		position: relative;
+		z-index: 1;
 	}
 
-	.d-t_cell_t{
-	 	@include rem('padding-left', 60);
-
-		 .d-t_cell_t{
-		 	@include rem('padding-left', 20);
-		 }
-
-		 &:first-child, .d-t_cell_t:first-child{
-		 	padding-left: 0;
-		 }
-
-		 p{
-		 	max-width: 300px;
-		 }
-	}
-
-
-	#footer-steps_or{
-		color: $c-gray-mid;
-		@include font-size(24, 1);
-		font-weight: bold;
-		text-align: center;
-	}
+	h3, p { font-weight: 100; }
+	h4, h5 { text-align: left; font-weight: normal; margin-bottom: 0; }
 
 	h3{
 		@include rem('margin-bottom', $padding-base-side);
 	}
 
-
-	@include max_tablet(){
-		div[class ^= 'sprite-']{
- 			display: none;
- 		}
- 	}
-
- 	@include mobile(){
- 		.d-t > .d-t_cell_t{
-	 		display: block;
-	 		padding-left: 0;
-	 		@include rem('margin-bottom', $padding-base-side);
-	 	}
-
-	 	#footer-steps_or{
-	 		text-align: left;
-	 	}
-
-	 	.d-t .d-t_cell_t .d-t_cell_t{
- 			border-left: 2px solid $c-gray-mid;
- 		}
- 	}
 }
+
+#footer-steps_c{
+	@extend %floating-fix;
+	max-width: 1024px;
+	display: inline-block;
+	text-align: left;
+
+	h5{
+		$h5_h: (16 + (16*1.2 - 16) )*2;
+		@include rem('height', $h5_h);
+	}
+
+	p{
+		$p_h: ($font-base-size + ($font-base-size*1.5 - $font-base-size) )*3;
+		@include rem('height', $p_h);
+
+		@include mobile(){
+			$p_h: ($font-base-size + ($font-base-size*1.5 - $font-base-size) )*4;
+			@include rem('height', $p_h);
+		}
+	}
+
+
+	#footer-steps_c_l, #footer-steps_c_r{
+		box-sizing: border-box;
+		width: 40%;
+
+		&:first-child{
+			padding-right: 100px;
+		}
+
+		&:last-child{
+			padding-left: 100px;
+		}
+
+
+		@media screen and (max-width: #{$media_hidedrone})
+		{
+			&:first-child{
+				padding-right: 20px;
+			}
+
+			&:last-child{
+				padding-left: 20px;
+			}
+		}
+
+
+		@media screen and (max-width: #{$media_hidearrows})
+		{
+			&:first-child{
+				padding-right: 0px;
+			}
+
+			&:last-child{
+				padding-left: 0px;
+			}
+		}
+	}
+
+	#footer-steps_c_l{
+		float: left;
+		&, h5 { text-align: right; }
+	}
+
+	#footer-steps_c_r{
+		float: right;
+	}
+}
+
+
+
+/* drone and lines decoration in steps */
+
+#footer-dec{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 240px;
+
+	left: 50%;
+	margin-left: -120px;
+
+	z-index: 0;
+
+	.sprite-drone{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		z-index: 2;
+
+	 	$icons-drone: map-get($icons, drone);
+    
+    	margin-left: - map-get($icons-drone, width)/2;
+    	margin-top: - map-get($icons-drone, height)/2 + $padding-base-side;
+
+
+    	@media screen and (max-width: #{$media_hidedrone}) 
+		{
+			display: none;
+		}
+	}
+}
+
+#footer-dec_line{
+	position: absolute;
+	top: 10px;
+	bottom: 10px;
+	width: 1px;
+	background-color: $c-gray-8;
+
+	left: 50%;
+	margin-left: -0.5px;
+	opacity: .5;
+}
+
+
+
+#footer-dec_arr_l, #footer-dec_arr_r{
+	position: absolute;
+	top: 50%;
+	margin-top: 10px;
+
+	@media screen and (max-width: #{$media_hidearrows}){
+		display: none;
+	}
+}
+
+.arrowline{
+	width: 1px;
+	height: 28px;
+	background-color: $c-gray-8;
+	display: block;
+	position: relative;
+
+	&.arrowline-top{
+		top: 4px;
+	}
+
+	&.arrowline-bottom{
+		bottom: 4px;
+	}
+}
+
+#footer-dec_arr_l{
+	left: -10px;
+
+	.arrowline-top{
+		transform: rotate(45deg);
+	}
+
+	.arrowline-bottom{
+		transform: rotate(-45deg);
+	}
+
+	@media screen and (max-width: #{$media_hidedrone}){
+		left: 70px;
+	}
+}
+
+#footer-dec_arr_r{
+	right: -10px;
+
+	.arrowline-top{
+		transform: rotate(-45deg);
+	}
+
+	.arrowline-bottom{
+		transform: rotate(45deg);
+	}
+
+	@media screen and (max-width: #{$media_hidedrone}){
+		right: 70px;
+	}
+}
+
+/* end of FOOTER - COLUMNS STEPS */
+
 
 
 
@@ -97,15 +232,14 @@ footer[role='contentinfo']{
 
 
 #footer-bottom{
+	background-color: lighten($c-gray-3, 5%);
 	text-align: center;
+
+	&, a { color: $c-gray-dark; }
 	
 
 	.d-t{
 		table-layout: fixed;
-	}
-
-	.lineobj a{
-		color: $c-base;
 	}
 
 	span[class^='icon-']{
@@ -144,7 +278,6 @@ footer[role='contentinfo']{
 			display: block;
 
 			a{
-				color: $c-link;
 				@include font-size(15, 1);
 			}
 		}

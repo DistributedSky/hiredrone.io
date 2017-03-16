@@ -1,15 +1,41 @@
-header(role='banner')
-	.setw
-		.d-t.fullw
-			a#head-logo.d-t_cell_m(href="#")
-				img(alt="Drone employee", src="assets/i/de-logo.png", srcset="assets/i/de-logo-x2.png")
+header(role='banner', class=inside ? '' : 'screen')
+	#header-top
+		.setw
+			.d-t.fullw
+				a#head-logo.d-t_cell_m(href="#")
+					img(alt="Drone employee", src="assets/i/de-logo.png", srcset="assets/i/de-logo-x2.png")
 
-			.d-t_cell_m
-				nav
-					input#headnav(type="checkbox")
-					label(for="headnav")
-					#headmenu
-						a.current(href="#") About
-						a(href="#") Blog
-						a(href="#") Press room
-						a(href="https://github.com/DroneEmployee/drone_employee_ros", target="_blank") Github
+				.d-t_cell_m
+					nav
+						input#headnav(type="checkbox")
+						label(for="headnav")
+						#headmenu
+							a.current(href="#") About us
+							a(href="#") Blog
+							a(href="#") Press room
+							a(href="https://github.com/DroneEmployee/drone_employee_ros", target="_blank") Github
+	
+	if !inside
+		#index-banner
+			.setw
+				h1 
+					| We help businesses 
+					span.t-blue hire drones
+					| .
+
+				.flexcols
+					.flexcols-i
+						.index-banner_content Connect drones with each other or your customers
+					.flexcols-i
+						.index-banner_content Assign safe routes for autonomous flight
+					.flexcols-i
+						.index-banner_content Use drones without human operator
+
+					#index-banner_decor-1
+						.circle
+					#index-banner_decor-2
+						.circle
+						.circle
+						.circle
+
+		canvas#header-dronesback
