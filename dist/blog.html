@@ -6,9 +6,10 @@
     <title>Blog | hiredrone.io</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <link href="assets/css/de.min.css?v=1" rel="stylesheet">
+    <link href="assets/css/de.min.css" rel="stylesheet">
     <script src="assets/js/jquery-1.9.1.min.js"></script>
-    <script src="assets/js/de.min.js?v=1"></script>
+    <script src="assets/js/de.min.js"></script>
+    
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png">
@@ -79,24 +80,22 @@
       </div>
     </main>
     <!--POPUS ON WEBSITE-->
-    <div id="popup-contact" class="popup-overlay">
-      <div class="popup-window">
-        <h2>Contact us</h2>
-        <form>
-          <p>
-            <input type="text" placeholder="Your name" class="inp-block">
-          </p>
-          <p>
-            <input type="email" placeholder="Your email" class="inp-block">
-          </p>
-          <p>
-            <textarea placeholder="Type here your message, please" class="inp-block"></textarea>
-          </p>
-          <p class="t-center">
-            <input type="submit" value="Submit">
-          </p>
-        </form><a href="#" class="popup-close"></a>
-      </div>
+    <div id="popup-contact">
+      <h2>Contact us</h2>
+      <form>
+        <p>
+          <input type="text" placeholder="Your name" class="inp-block">
+        </p>
+        <p>
+          <input type="email" placeholder="Your email" class="inp-block">
+        </p>
+        <p>
+          <textarea placeholder="Type here your message, please" class="inp-block"></textarea>
+        </p>
+        <p class="t-center">
+          <input type="submit" value="Submit">
+        </p>
+      </form>
     </div>
     <footer role="contentinfo">
       <div id="footer-steps" class="footer-sec">
@@ -105,11 +104,11 @@
           <div id="footer-steps_c">
             <div id="footer-steps_c_l">
               <h5>Contact an expert</h5>
-              <p>Talk about the possibilities of what Drone Employee can do for your business.</p><a href="#popup-contact" class="link-bord">Contact us</a>
+              <p>Talk about the possibilities of what Drone Employee can do for your business.</p><a href="#popup-contact" data-fancybox class="link-bord-a left"><span>Contact us</span></a>
             </div>
             <div id="footer-steps_c_r">
               <h5>Get started with setup</h5>
-              <p>Start an Drone Employee network and build applications that can take advantage of its capabilities.</p><a href="https://github.com/DroneEmployee/drone_employee_ros" target="_blank" class="link-bord">Build it now</a>
+              <p>Start an Drone Employee network and build applications that can take advantage of its capabilities.</p><a href="https://github.com/DroneEmployee/drone_employee_ros" target="_blank" class="link-bord-a right"><span>Build it now</span></a>
             </div>
           </div>
         </div>

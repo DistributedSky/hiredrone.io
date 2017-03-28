@@ -26,17 +26,11 @@
 /*==========*/
 
 html {
-  // font-size: 100%;
   @include font_percentage($font-base-size);
 
   @include min_desktop_m(){
     @include font_percentage($font-base-size + 2);
   }
-
-  @include mobile(){
-    @include font_percentage($font-base-size - 2);
-  }
-
 }
 
 body { 
@@ -58,7 +52,6 @@ a {
   &.link-external{
     span {
       margin-right: 10px;
-      // @extend %inline-block;
       display: inline;
 
       &:last-child{
@@ -69,8 +62,8 @@ a {
 }
 
 #{headings()} {
-  @include rem('margin-top', $vertical-rythm*2);
-  @include rem('margin-bottom', $vertical-rythm);
+  @include rem('margin-top', $vertical-rythm*4);
+  @include rem('margin-bottom', $vertical-rythm*2);
   text-align: center;
 
   &:first-child{
@@ -84,14 +77,14 @@ h1 {
 
 h1 { 
   @include font-size(40, $scale-small); 
-  @include rem('margin-bottom', $vertical-rythm*2);
+  @include rem('margin-bottom', $vertical-rythm*3);
   color: $c-gray-dark;
 }
 
-h2 { @include font-size(26, $scale-small); @include rem('margin-top', $vertical-rythm*4); }
-h3 { @include font-size(20, $scale-small); }
-h4 { @include font-size(18, $scale-small); }
-h5 { @include font-size(16, $scale-small); }
+h2 { @include font-size(32, $scale-small); @include rem('margin-top', $vertical-rythm*4); }
+h3 { @include font-size(28, $scale-small); }
+h4 { @include font-size(24, $scale-small); }
+h5 { @include font-size(22, $scale-small); }
 
 ul, ol {
   @include rem('margin-left', 15);
@@ -102,8 +95,12 @@ ul, ol {
 
 }
 
-ul, p, blockquote{
+p{
   @include rem('margin-bottom', $vertical-rythm);
+}
+
+ul, ol, blockquote {
+  @include rem('margin-bottom', $vertical-rythm*2);
 }
 
 li{
@@ -118,12 +115,15 @@ ul, li, p, blockquote{
 
 blockquote{
 
-  background-color: #fafafa;
   @include rem('padding', $padding-base);
   @include rem('border-width', 2, 0);
   border-style: solid;
   border-color: $c-green;
   position: relative;
+
+  text-align: center;
+  font-weight: 100;
+  font-size: 1.2em;
 
   &:before, &:after{
     content: "";
@@ -155,8 +155,8 @@ blockquote{
 hr{
   height: 1px;
   border: 0;
-  background-color: $c-gray-dark;
-  @include rem('margin', $vertical-rythm, 0);
+  background-color: $c-gray-light;
+  @include rem('margin', $vertical-rythm*2, 0);
 
   &.hr-small{
     @include rem('margin', 4, 0);
@@ -179,18 +179,16 @@ hr{
     display: block;
     max-width: 100%;
   }
-
-  // a{
-  //   &:visited{
-  //     color: lighten($c-link, 15%) !important;
-  //   }
-  // }
 }
 
 // .t-red, a.t-red { color: $color-red; color: $color-red !important; }
 .t-blue, a.t-blue { color: $c-blue; color: $c-blue !important; }
 // .t-green, a.t-green { color: $color-green; color: $color-green !important; }
 // .t-gray, a.t-gray { color: $color-gray-5; color: $color-gray-5 !important; }
+
+.lead{
+  font-weight: 100;
+}
 
 
 

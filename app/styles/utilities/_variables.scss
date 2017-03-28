@@ -32,16 +32,23 @@ $c-text: $c-base;
 $c-link: $c-blue;
 $c-hover: $c-green;
 
-// $color-table-head: $c-base;
-// $color-table-border: $color-bluecob-3;
-// $color-table-border_hov: $color-bluecob-6;
+$c-table-text: $c-text;
+$c-table-back-tr: #fff;
+$c-table-back-oddtr: #fff; 
+$c-table-border: $c-gray-2;
+$c-table-head-text: $c-gray-9;
+$c-table-head-back: #fff;
+$c-table-head-border: $c-gray-5;
+$c-table-foot-text: $c-table-head-text;
+$c-table-foot-back: #fff;
+$c-table-foot-border: $c-table-head-border;
 
 $font-family-base:  'Open Sans', Tahoma, Verdana, sans-serif;
 $font-family-second: 'Gotham Pro Bol', Tahoma, Verdana, sans-serif;
 $scale: 1.5; //для вычисления интерлиньяжа
 $scale-small: 1.2; //например, для вычисления интерлиньяжа заголовков
 $font-size-btnBase: 16;
-$font-base-size: 13;
+$font-base-size: 14;
 
 @function rythm-calc($font-size: $font-base-size, $scale: $scale){
   @return $font-size * $scale;

@@ -6,9 +6,10 @@
     <title>Decentralised sky | hiredrone.io</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <link href="assets/css/de.min.css?v=1" rel="stylesheet">
+    <link href="assets/css/de.min.css" rel="stylesheet">
     <script src="assets/js/jquery-1.9.1.min.js"></script>
-    <script src="assets/js/de.min.js?v=1"></script>
+    <script src="assets/js/de.min.js"></script>
+    
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png">
@@ -30,34 +31,35 @@
           </div>
         </div>
       </div>
-      <div id="index-banner">
-        <div class="setw">
-          <h1>
-             
-            We help businesses <span class="t-blue">hire drones</span>.
-          </h1>
-          <div class="flexcols">
-            <div class="flexcols-i">
-              <div class="index-banner_content">Connect drones with each other or your customers</div>
-            </div>
-            <div class="flexcols-i">
-              <div class="index-banner_content">Assign safe routes for autonomous flight</div>
-            </div>
-            <div class="flexcols-i">
-              <div class="index-banner_content">Use drones without human operator</div>
-            </div>
-            <div id="index-banner_decor-1">
-              <div class="circle"></div>
-            </div>
-            <div id="index-banner_decor-2">
-              <div class="circle"></div>
-              <div class="circle"></div>
-              <div class="circle"></div>
+      <div class="screen-content">
+        <div id="index-banner">
+          <div class="setw">
+            <h1>
+               
+              We help businesses <span class="t-blue">hire drones</span>.
+            </h1>
+            <div class="flexcols">
+              <div class="flexcols-i">
+                <div class="index-banner_content">Connect drones with each other or your customers</div>
+              </div>
+              <div class="flexcols-i">
+                <div class="index-banner_content">Assign safe routes for autonomous flight</div>
+              </div>
+              <div class="flexcols-i">
+                <div class="index-banner_content">Use drones without human operator</div>
+              </div>
+              <div id="index-banner_decor-1">
+                <div class="circle"></div>
+              </div>
+              <div id="index-banner_decor-2">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <canvas id="header-dronesback"></canvas>
     </header>
     <main role="main">
       <div id="index-targets">
@@ -74,55 +76,55 @@
         <div class="setw">
           <div id="index-promotions_frame">With our software you can organise multiple drones at your site so they process payments, take off and film the action fully autonomously.</div>
           <div id="index-promotions_text">
+            <h4> 
+              <p><span>Buy a drone</span></p>
+              <div class="line">
+                <div class="circle"></div>
+              </div>
+            </h4>
+            <p class="text">We support 15 drone manufacturers and we can help you choose the right one for you!</p>
             <h4>
-               
-              Buy a drone
+              <p><span>Prepare the area</span></p>
               <div class="line">
                 <div class="circle"></div>
               </div>
             </h4>
-            <p>We support 15 drone manufacturers and we can help you choose the right one for you!</p>
-            <h4>Prepare the area
+            <p class="text">Use mapping tools and limit the area for drones to ensure the safety of your clients!</p>
+            <h4>
+              <p><span>Hire a drone</span></p>
               <div class="line">
                 <div class="circle"></div>
               </div>
             </h4>
-            <p>Use mapping tools and limit the area for drones to ensure the safety of your clients!</p>
-            <h4>Hire a drone
+            <p class="text">Install our software to be make your drone film your clients, monitor the area or deliver goods!</p>
+            <h4>
+              <p><span>Grow profit</span></p>
               <div class="line">
                 <div class="circle"></div>
               </div>
             </h4>
-            <p>Install our software to be make your drone film your clients, monitor the area or deliver goods!</p>
-            <h4>Grow profit
-              <div class="line">
-                <div class="circle"></div>
-              </div>
-            </h4>
-            <p>Expand your drone base even further by connecting more drones!</p>
+            <p class="text">Expand your drone base even further by connecting more drones!</p>
           </div>
         </div>
       </div>
     </main>
     <!--POPUS ON WEBSITE-->
-    <div id="popup-contact" class="popup-overlay">
-      <div class="popup-window">
-        <h2>Contact us</h2>
-        <form>
-          <p>
-            <input type="text" placeholder="Your name" class="inp-block">
-          </p>
-          <p>
-            <input type="email" placeholder="Your email" class="inp-block">
-          </p>
-          <p>
-            <textarea placeholder="Type here your message, please" class="inp-block"></textarea>
-          </p>
-          <p class="t-center">
-            <input type="submit" value="Submit">
-          </p>
-        </form><a href="#" class="popup-close"></a>
-      </div>
+    <div id="popup-contact">
+      <h2>Contact us</h2>
+      <form>
+        <p>
+          <input type="text" placeholder="Your name" class="inp-block">
+        </p>
+        <p>
+          <input type="email" placeholder="Your email" class="inp-block">
+        </p>
+        <p>
+          <textarea placeholder="Type here your message, please" class="inp-block"></textarea>
+        </p>
+        <p class="t-center">
+          <input type="submit" value="Submit">
+        </p>
+      </form>
     </div>
     <footer role="contentinfo">
       <div id="footer-steps" class="footer-sec">
@@ -131,11 +133,11 @@
           <div id="footer-steps_c">
             <div id="footer-steps_c_l">
               <h5>Contact an expert</h5>
-              <p>Talk about the possibilities of what Drone Employee can do for your business.</p><a href="#popup-contact" class="link-bord">Contact us</a>
+              <p>Talk about the possibilities of what Drone Employee can do for your business.</p><a href="#popup-contact" data-fancybox class="link-bord-a left"><span>Contact us</span></a>
             </div>
             <div id="footer-steps_c_r">
               <h5>Get started with setup</h5>
-              <p>Start an Drone Employee network and build applications that can take advantage of its capabilities.</p><a href="https://github.com/DroneEmployee/drone_employee_ros" target="_blank" class="link-bord">Build it now</a>
+              <p>Start an Drone Employee network and build applications that can take advantage of its capabilities.</p><a href="https://github.com/DroneEmployee/drone_employee_ros" target="_blank" class="link-bord-a right"><span>Build it now</span></a>
             </div>
           </div>
         </div>

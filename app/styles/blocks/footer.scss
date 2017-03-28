@@ -46,6 +46,10 @@ $media_hidearrows: $point-mobile;
 		@include rem('margin-bottom', $padding-base-side);
 	}
 
+	h5{
+		@include font-size(16, $scale-small);
+	}
+
 }
 
 #footer-steps_c{
@@ -232,7 +236,7 @@ $media_hidearrows: $point-mobile;
 
 
 #footer-bottom{
-	background-color: lighten($c-gray-3, 5%);
+	background-color: #f7f7f7;
 	text-align: center;
 
 	&, a { color: $c-gray-dark; }

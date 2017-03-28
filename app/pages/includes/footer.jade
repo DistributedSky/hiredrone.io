@@ -1,19 +1,16 @@
 //POPUS ON WEBSITE
-#popup-contact.popup-overlay
-	.popup-window
-		h2 Contact us
+#popup-contact
+	h2 Contact us
 
-		form
-			p
-				input.inp-block(type="text", placeholder="Your name")
-			p
-				input.inp-block(type="email", placeholder="Your email")
-			p
-				textarea.inp-block(placeholder="Type here your message, please")
-			p.t-center
-				input(type="submit", value="Submit")
-
-		a.popup-close(href="#")
+	form
+		p
+			input.inp-block(type="text", placeholder="Your name")
+		p
+			input.inp-block(type="email", placeholder="Your email")
+		p
+			textarea.inp-block(placeholder="Type here your message, please")
+		p.t-center
+			input(type="submit", value="Submit")
 
 
 
@@ -27,12 +24,12 @@ footer(role='contentinfo')
 				#footer-steps_c_l
 					h5 Contact an expert
 					p Talk about the possibilities of what Drone Employee can do for your business.
-					a(href="#popup-contact").link-bord Contact us
+					a(href="#popup-contact", data-fancybox).link-bord-a.left: span Contact us
 
 				#footer-steps_c_r
 					h5 Get started with setup
 					p Start an Drone Employee network and build applications that can take advantage of its capabilities.
-					a(href="https://github.com/DroneEmployee/drone_employee_ros", target="_blank").link-bord Build it now
+					a(href="https://github.com/DroneEmployee/drone_employee_ros", target="_blank").link-bord-a.right: span Build it now
 
 
 

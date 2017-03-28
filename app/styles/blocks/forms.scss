@@ -20,7 +20,7 @@ $p-koef: 2;
 }
 
 // /*======== FORMS BASIC =========*/
-input, textarea, a[class*='btn-'], input[class*='btn-'], button{
+input, textarea, button{
   @extend %form_el_base;
   
   &.error{
@@ -43,74 +43,6 @@ input:not([type='submit']), textarea, .select{
   }
 }
 
-// input[type='number']{
-//   -moz-appearance: textfield;
-//   &::-webkit-inner-spin-button { -webkit-appearance: none;}
-//   &::-webkit-outer-spin-button { -webkit-appearance: none;}
-// }
-
-
-// .select{
-//   $selectArrTop: map-get($icons, selectArrTop);
-//   position: relative;
-//   box-sizing: border-box;
-
-//   &:before, &:after{
-//     content:"";
-//     display: block;
-//     position: absolute;
-//     pointer-events: none;
-//   }
-
-//   &:before{
-//     z-index: 1;
-//     top: 0;
-//     right: 0;
-//     bottom: 0;
-//     background-color: $color-light;
-//     width: map-get($selectArrTop, width) + 12;
-//   }
-
-//   &:after{
-//     @include get-sprite('selectArrTop');
-//     z-index: 2;
-//     top: 50%;
-//     margin-top: - map-get($selectArrTop, width)/2 + 4;
-//     right: 8px;
-//   }
-
-//   select{
-//     @extend %form_el_base;
-//     @include font-size-fit(12);
-//     appearance: none;
-//     box-shadow: none;
-//     border: none;
-//     background-color: transparent;
-//     background-image: none;
-//     padding-right: map-get($selectArrTop, width) + 14;
-//     position: relative;
-//     z-index: 0;
-//     width: 100%;
-
-//     &:focus{
-//       outline: none;
-//     }
-
-//     &[disabled], &.disabled{
-//       color: $color-gray-4;
-//       color: $color-gray-4 !important;
-//       cursor: default;
-//       cursor: default !important;
-//     }
-
-//     &::-ms-expand { display: none; } /*ie fix*/
-//   }
-
-//   &.small select{
-//     padding-top: 4px;
-//     padding-bottom: 4px;
-//   }
-// }
 
 textarea{
   @include rem('height', 100);
@@ -119,7 +51,7 @@ textarea{
 
 // /*=== FORMS BUTTONS ===*/
 
-input[type='submit'], a[class*='btn-'], input[class*='btn-'], button {
+input[type='submit'], button {
 	@extend %form_el_base;
 
 	@include transition(background-color 0.2s ease);
@@ -152,7 +84,7 @@ input[type='submit'], a[class*='btn-'], input[class*='btn-'], button {
 	  }
 }
 
-.link-bord{
+.link-bord, .link-bord-a{
   color: $c-link;
   border: 1px solid $c-link;
   display: inline-block;
@@ -167,64 +99,184 @@ input[type='submit'], a[class*='btn-'], input[class*='btn-'], button {
 }
 
 
+/*======== ANIMATED BUTTONS =========*/
+@keyframes ScaleUp {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+   transform: scale(1);
+  }
+}
 
-// .btn-wrap{
-//   @include px-to-rem('margin-top', $vertical-rythm);
-// }
 
-// input[type='submit'], button, .btn-blue{
-//   &, &:hover { color: $color-light; }
+.link-bord-a{
 
-//   background-color: $color-blue;
-//   border-color: $color-blue-dark;
+  padding: 0;
 
-//   &:hover{
-//     background-color: darken($color-blue,5%);
-//   }
-// }
+  &, &:hover{ border: 0; color: $c-link; }
 
-// input[type='submit'], button, a{
-//   &.btn-yellow{
-//     &, &:hover { color: $color-text; }
+  span{
+    @include rem('padding', 10, 14);
+    display: block;
+  }
+
+  &, span {
+    position: relative;
+
+    &:before, &:after{
+      content:"";
+      position: absolute;
+      background-color: $c-link;
+    }
+  }
+
+  &:before, &:after{
+    left: 0;
+    right: 0;
+    height: 1px;
+  }
+
+  &:before{
+    top: 0;
+  }
+
+  &:after{
+    bottom: 0;
+  }
+
+
+  span{
+    z-index: 1;
+
+    &:before, &:after{
+      top: 0;
+      bottom: 0;
+      width: 1px;
+    }
+
+    &:before{
+      left: 0;
+    }
+
+    &:after{
+      right: 0;
+    }
+  }
+
+  &:hover{
+    color: #fff;
+
+    &:after{
+      height: 100%;
+      transition: height 0.5s ease;
+    }
+  }
+}
+
+
+
+@mixin link-bord__animate($type: 'left solid leftside', $delay: 0.2s, $duration: 0.4s, $speed: 0.2s){
     
-//     background-color: $color-yellow;
-//     border-color: $color-yellow-dark;
-
-//     &:hover{
-//       background-color: darken($color-yellow,1%);
-//     }
-//   }
-
-//   &.btn-big{
-//     @extend %btn_big;
-//   }
-
-//   &.btn-small{
-//     @extend %btn_small;
-//   }
-// }
 
 
-// /*======== FORMS OTHER STYLES =========*/
+      &, span {
+    
+        &:before, &:after{
+          transform: scale(0);
+          animation-name: ScaleUp;
+          animation-duration: $duration;
+          animation-timing-function: ease-in-out;
+          animation-fill-mode: forwards;
+        }
+      }
 
-// // .label-after{
-// //   @extend %inline-block;
-// //   @include font-size(12);
-// //   margin-left: 10px;
-// // }
+      $delay1: $delay;
+      $delay2: $delay + $duration;
+      $delay3: $delay + $duration + $speed;
+      $delay4: $delay + $duration*1.8 + $speed;
 
-// // .label-block{
-// //   color: $color-gray-5;
-// //   font-family: $font-family-second;
-// //   display: block;
 
-// //   @include px-to-rem('margin-top', $vertical-rythm/2);
-// //   @include font-size(12);
 
-// //   &:first-child{
-// //     margin-top: 0;
-// //   }
-// // }
+
+      @if ( $type == 'left solid leftside' ){
+        span:before{
+          transform-origin: bottom center !important;
+          animation-delay: $delay1 !important;
+        }
+
+        &:before{
+          transform-origin: center left;
+          animation-delay: $delay2;
+        }
+
+        span:after{
+          transform-origin: top center !important;
+          animation-delay: $delay3 !important;
+        }
+
+        &:after{
+          transform-origin: center right;
+          animation-delay: $delay4;
+        }
+
+      }
+
+      @if ( $type == 'rightdirect solid bottomside' ){
+        &:after{
+          transform-origin: center center;
+          animation-delay: $delay1;
+        }
+
+        span:before{
+          transform-origin: bottom center !important;
+          animation-delay: $delay2 !important;
+        }
+
+        &:before{
+          transform-origin: center left;
+          animation-delay: $delay3;
+        }
+
+        span:after{
+          transform-origin: top center !important;
+          animation-delay: $delay4 !important;
+        }
+
+        
+
+      }
+
+
+
+      @if ( $type == 'leftdirect solid bottomside' ){
+        &:after{
+          transform-origin: center center;
+          animation-delay: $delay1;
+        }
+
+        span:after{
+          transform-origin: bottom center !important;
+          animation-delay: $delay2 !important;
+        }
+
+        &:before{
+          transform-origin: center right;
+          animation-delay: $delay3;
+        }
+
+        span:before{
+          transform-origin: top center !important;
+          animation-delay: $delay4 !important;
+        }
+
+      }
+
+}
+/*======== end of ANIMATED BUTTONS =========*/
+
+
+/*======== FORMS OTHER STYLES =========*/
 
 .inp-block{
   @include inp_block();
@@ -234,85 +286,3 @@ input[type='submit'], a[class*='btn-'], input[class*='btn-'], button {
   @include rem('width', 400);
   max-width: 100%;
 }
-
-// .inp-mid { 
-//   width: 60%;
-
-//   @include mobile(){
-//     @include inp_block();
-//   }
-// }
-
-// .inp-midsm{
-//   width: 40%;
-
-//   @include mobile(){
-//     @include inp_block();
-//   }
-// }
-
-// .inp-sm{
-//   @include px-to-rem('width', 40);
-//   text-align: center;
-// }
-
-// .msg-ok, .msg-err{
-//   @include font-size(12, 1.2);
-//   font-family: $font-family-second;
-//   margin-top: 5px;
-// }
-
-// .msg-ok{
-//   color: $color-green;
-// }
-
-// .msg-err{
-//   color: $color-red;
-// }
-
-// .form-checkline{
-//   input{
-//     margin-left: 1px;
-//   }
-
-//   label{
-//     margin-left: 10px;
-//   }
-// }
-
-// .btn-wrapStripes{
-//   @include px-to-rem('margin-bottom', $vertical-rythm*2);
-//   @include px-to-rem('margin-top', $vertical-rythm*2);
-//   text-align: center;
-//   position: relative;
-
-//   .btn-yellow{
-//     @extend %inline-block;
-//     @extend %btn_big;
-//     position: relative;
-//     z-index: 2;
-//     outline: 20px solid $color-light;
-//   }
-
-//   &:before, &:after{
-//     content:"";
-//     position: absolute;
-//     left: 0;
-//     right: 0;
-//     top: 50%;
-//   }
-
-//   &:before{
-//     background-color: $color-yellow;
-//     height: 10px;
-//     margin-top: -5px;
-//     z-index: 0;
-//   }
-
-//   &:after{
-//     background-color: $color-light;
-//     height: 6px;
-//     margin-top: -3px;
-//     z-index: 1;
-//   }
-// }
