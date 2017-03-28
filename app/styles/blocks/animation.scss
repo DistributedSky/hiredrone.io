@@ -127,6 +127,10 @@ $patternReveal-delay: $BannerCols-delay;
 			animation: PatternBlackenning $patternReveal-duration $patternReveal-delay linear forwards;
 		}
 	}
+}
+
+
+.#{$modernizr-animation}{
 
 	#index-banner{
 
@@ -171,9 +175,7 @@ $patternReveal-delay: $BannerCols-delay;
 		}
 	}
 
-}
-
-.#{$modernizr-animation}{
+	
 
 
 	#index-targets{

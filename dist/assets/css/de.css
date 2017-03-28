@@ -165,25 +165,25 @@ input, textarea, button, input[type='submit'], .link-bord, .link-bord-a, .sec-gi
 
 @font-face {
   font-family: "Gotham Pro Bol";
-  src: url('../fonts/GothaProBol.eot?1490685937');
-  src: url('../fonts/GothaProBol.eot?&1490685937#iefix') format('embedded-opentype'), url('../fonts/GothaProBol.woff?1490685937') format('woff'), url('../fonts/GothaProBol.ttf?1451944208') format('truetype');
+  src: url('../fonts/GothaProBol.eot?1490700703');
+  src: url('../fonts/GothaProBol.eot?&1490700703#iefix') format('embedded-opentype'), url('../fonts/GothaProBol.woff?1490700703') format('woff'), url('../fonts/GothaProBol.ttf?1451944208') format('truetype');
 }
 @font-face {
   font-family: "Open Sans";
-  src: url('../fonts/OpenSans-Light.eot?1490685937');
-  src: url('../fonts/OpenSans-Light.eot?&1490685937#iefix') format('embedded-opentype'), url('../fonts/OpenSans-Light.woff?1490685937') format('woff'), url('../fonts/OpenSans-Light.ttf?1415701385') format('truetype');
+  src: url('../fonts/OpenSans-Light.eot?1490700703');
+  src: url('../fonts/OpenSans-Light.eot?&1490700703#iefix') format('embedded-opentype'), url('../fonts/OpenSans-Light.woff?1490700703') format('woff'), url('../fonts/OpenSans-Light.ttf?1415701385') format('truetype');
   font-weight: 100;
 }
 @font-face {
   font-family: "Open Sans";
-  src: url('../fonts/OpenSans-Regular.eot?1490685937');
-  src: url('../fonts/OpenSans-Regular.eot?&1490685937#iefix') format('embedded-opentype'), url('../fonts/OpenSans-Regular.woff?1490685937') format('woff'), url('../fonts/OpenSans-Regular.ttf?1415701385') format('truetype');
+  src: url('../fonts/OpenSans-Regular.eot?1490700703');
+  src: url('../fonts/OpenSans-Regular.eot?&1490700703#iefix') format('embedded-opentype'), url('../fonts/OpenSans-Regular.woff?1490700703') format('woff'), url('../fonts/OpenSans-Regular.ttf?1415701385') format('truetype');
   font-weight: 400;
 }
 @font-face {
   font-family: "Open Sans";
-  src: url('../fonts/OpenSans-Bold.eot?1490685937');
-  src: url('../fonts/OpenSans-Bold.eot?&1490685937#iefix') format('embedded-opentype'), url('../fonts/OpenSans-Bold.woff?1490685937') format('woff'), url('../fonts/OpenSans-Bold.ttf?1415701385') format('truetype');
+  src: url('../fonts/OpenSans-Bold.eot?1490700703');
+  src: url('../fonts/OpenSans-Bold.eot?&1490700703#iefix') format('embedded-opentype'), url('../fonts/OpenSans-Bold.woff?1490700703') format('woff'), url('../fonts/OpenSans-Bold.ttf?1415701385') format('truetype');
   font-weight: 800;
 }
 body, .gallery-item {
@@ -2111,12 +2111,13 @@ footer[role='contentinfo'] {
   -webkit-animation: PatternBlackenning 8s 1s linear forwards;
           animation: PatternBlackenning 8s 1s linear forwards;
 }
-.cssanimations.no-safari #index-banner h1 {
+
+.cssanimations #index-banner h1 {
   opacity: 0;
   -webkit-animation: FadeIn 1s ease-in-out forwards;
           animation: FadeIn 1s ease-in-out forwards;
 }
-.cssanimations.no-safari #index-banner .flexcols-i {
+.cssanimations #index-banner .flexcols-i {
   opacity: 0;
   -webkit-animation-name: FadeIn;
           animation-name: FadeIn;
@@ -2127,7 +2128,7 @@ footer[role='contentinfo'] {
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
 }
-.cssanimations.no-safari #index-banner .flexcols-i:before {
+.cssanimations #index-banner .flexcols-i:before {
   width: 0;
   -webkit-animation-name: WidthGrow;
           animation-name: WidthGrow;
@@ -2138,19 +2139,18 @@ footer[role='contentinfo'] {
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
 }
-.cssanimations.no-safari #index-banner .flexcols-i:nth-child(1), .cssanimations.no-safari #index-banner .flexcols-i:nth-child(1):before {
+.cssanimations #index-banner .flexcols-i:nth-child(1), .cssanimations #index-banner .flexcols-i:nth-child(1):before {
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 }
-.cssanimations.no-safari #index-banner .flexcols-i:nth-child(2), .cssanimations.no-safari #index-banner .flexcols-i:nth-child(2):before {
+.cssanimations #index-banner .flexcols-i:nth-child(2), .cssanimations #index-banner .flexcols-i:nth-child(2):before {
   -webkit-animation-delay: 2.1s;
           animation-delay: 2.1s;
 }
-.cssanimations.no-safari #index-banner .flexcols-i:nth-child(3), .cssanimations.no-safari #index-banner .flexcols-i:nth-child(3):before {
+.cssanimations #index-banner .flexcols-i:nth-child(3), .cssanimations #index-banner .flexcols-i:nth-child(3):before {
   -webkit-animation-delay: 3.6s;
           animation-delay: 3.6s;
 }
-
 .cssanimations #index-targets .flexcols-i {
   opacity: 0;
   top: 20px;
@@ -2747,8 +2747,7 @@ table tbody tr:nth-child(2n) {
   padding: 0rem 0rem 0.625rem;
   border-style: solid;
   border-color: #f2f2f2;
-  border-width: 1px 0px;
-  border-width: 0.0625rem 0rem;
+  border-width: 1px 0 0;
   margin-bottom: 21px;
   margin-bottom: 1.3125rem;
 }
@@ -2813,8 +2812,8 @@ table tbody tr:nth-child(2n) {
 }
 
 .single .blog-postinfo {
-  margin-top: 21px;
-  margin-top: 1.3125rem;
+  margin-top: 63px;
+  margin-top: 3.9375rem;
   margin-bottom: 0px;
   margin-bottom: 0rem;
 }

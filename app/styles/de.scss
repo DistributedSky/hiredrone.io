@@ -513,7 +513,7 @@ table{
   @include rem('padding', 0, 0, 10);
   border-style: solid;
   border-color: $c-gray-1;
-  @include rem('border-width', 1, 0);
+  border-width: 1px 0 0;
   @include rem('margin-bottom', $vertical-rythm);
 
   .item{
@@ -587,7 +587,7 @@ table{
 
 .single{
   .blog-postinfo{
-    @include rem('margin-top', $vertical-rythm);
+    @include rem('margin-top', $vertical-rythm*3);
     @include rem('margin-bottom', 0);
   }
 }
