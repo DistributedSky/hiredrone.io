@@ -1,0 +1,174 @@
+/*resets*/
+* 
+{
+	margin:0; padding:0; outline: 0;
+    background:transparent;
+    vertical-align:baseline;
+}
+
+img {border: 0;}
+
+/*html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%; 
+    -ms-text-size-adjust: 100%; 
+}*/
+
+article,aside,details,figcaption,figure, footer,header,hgroup,menu,nav,section, main 
+{
+    display:block;
+}
+
+nav ul {list-style:none;}
+table {border-collapse:collapse; border-spacing:0;}
+input, select {vertical-align:middle;}
+/*end of resets*/
+
+
+
+.lead{
+	text-align: center;
+
+	font-size: 1.6em;
+	line-height: 1.5;
+
+	margin: 1.8em 0;
+}
+
+
+
+
+/*Buttons*/
+
+
+/*Buttons - Basics*/
+.btn {
+	display: inline-block;
+	vertical-align: middle;
+
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+
+	cursor: pointer;
+
+	text-transform: uppercase;
+	text-align: center;
+	text-decoration: none;
+
+	font-size: 1.1em;
+	line-height: 1;
+	font-weight: bold;
+
+	padding: .5em .9em;
+
+	transition: all.2s ease;
+
+	border-width: 1px;
+	border-style: solid;
+
+	border-radius: 4px;
+
+	box-sizing: border-box;
+}
+
+.btn:hover{
+	text-decoration: none;
+}
+
+
+
+/*Buttons - Sizes*/
+.btn-sm{
+	font-size: .8em;
+	padding: .5em .8em;
+}
+
+.btn-md{
+	font-size: 1.1em;
+	padding: .6em 1em;
+}
+
+
+.btn-lg{
+	font-size: 1.4em;
+	padding: .8em 1.2em;
+}
+
+.btn-block{
+	width: 100%;
+	margin-bottom: 1em;
+}
+
+
+
+/*Buttons - Styles*/
+.btn-link{
+	border-color: #00aded;
+	color: #00aded;
+}
+
+.btn-link:hover{
+	border-color: #0098d0;
+	color: #0098d0;
+}
+
+.btn-default{
+	background-color: #00aded;
+	border-color: #00aded;
+	color: #fff;
+}
+
+.btn-default:hover{
+	background-color: #0098d0;
+	border-color: #0098d0;
+	color: #fff;
+}
+
+.btn-primary{
+	background-color: #d23d3c;
+	border-color: #d23d3c;
+	color: #fff;
+}
+
+.btn-primary:hover{
+	background-color: #b63534;
+	border-color: #b63534;
+	color: #fff;
+}
+/*end of Buttons*/
+
+/*Media*/
+.media-youtube{
+	text-align: center;
+	margin-top: 3em;
+	margin-bottom: 3em;
+}
+
+.media-youtube:first-child{
+	margin-top: 0;
+}
+
+.media-youtube:last-child{
+	margin-bottom: 0;
+}
+
+
+.media-youtube iframe, .media-youtube object , .media-youtube embed{
+	border: 0;
+}
+
+.media-youtube.responsive-true{
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 30px; height: 0; overflow: hidden;
+}
+
+.media-youtube.responsive-true iframe, .media-youtube.responsive-true object, .media-youtube.responsive-true embed{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+/*end of Media*/

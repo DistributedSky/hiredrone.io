@@ -11,6 +11,8 @@
 @import "utilities/text";
 @import "utilities/plugins";
 
+@import "bootstrap/bootstrap";
+
 @import "blocks/forms";
 @import "blocks/header";
 @import "blocks/footer";
@@ -175,16 +177,41 @@ body:not([class *= 'home']){
 }
 
 .sec-github{
-  text-align: center;
   text-transform: uppercase;
-  font-weight: bold;
-  display: block;
+  font-weight: 600;
+  display: table; 
   @extend %link_noline;
-  @include rem('margin-top', $vertical-rythm*2);
-  @include font-size(24, $scale-small);
+
+  color: $c-text;
+  border: 1px solid $c-text;
+  border-radius: 4px;
+  @include rem('padding', 10, 20);
+
+  @include rem('margin', $vertical-rythm*4, auto);
+
+  @include font-size(20, $scale-small);
 
   .icon-git{
-      @include font-size(50, 1);
+      @include font-size(35, 1);
+      @include rem('padding-right', 17);
+  }
+
+  .icon-git, p {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  &:first-child{
+    margin-top: 0;
+  }
+
+  &:last-child{
+    margin-bottom: 0;
+  }
+
+  &:hover{
+    color: $c-link;
+    border-color: $c-link;
   }
 }
 
