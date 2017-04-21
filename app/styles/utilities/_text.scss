@@ -182,11 +182,9 @@ hr{
 }
 
 
-.blog-post{
-  img{
-    display: block;
-    max-width: 100%;
-  }
+.blog-post img, .img-b{
+  display: block;
+  max-width: 100%;
 }
 
 // .t-red, a.t-red { color: $color-red; color: $color-red !important; }
@@ -197,7 +195,6 @@ hr{
 .lead{
   font-weight: 100;
 }
-
 
 
 

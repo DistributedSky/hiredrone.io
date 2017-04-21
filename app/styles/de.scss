@@ -154,6 +154,7 @@ body:not([class *= 'home']){
   @extend %flex_align_v;
 }
 
+
 /*======== END BASIC STYLES =========*/
 
 
@@ -162,19 +163,109 @@ body:not([class *= 'home']){
 
 /*======== ELEMENTS =========*/
 
-#oldiebrowser{
-  @include rem('padding', 10);
-  background-color: #F5DCA4;
-  color: $c-gray-9;
+// #oldiebrowser{
+//   @include rem('padding', 10);
+//   background-color: #F5DCA4;
+//   color: $c-gray-9;
 
-  @include rem('border-width', 0, 0, 1);
-  border-style: solid;
-  border-color: darken(#F5DCA4, 10%);
+//   @include rem('border-width', 0, 0, 1);
+//   border-style: solid;
+//   border-color: darken(#F5DCA4, 10%);
 
-  p{
-    @include rem('margin-bottom', 10);
+//   p{
+//     @include rem('margin-bottom', 10);
+//   }
+// }
+
+
+
+/* OUTDATED BROWSER */
+
+#page-error{
+  background-color: $c-gray-10;
+  color: #fff;
+
+  .f-left, .f-right{
+    width: 50%;
   }
 }
+
+#page-error-content{
+  padding-left: 60px;
+
+  h1{
+    text-align: left;
+    color: #fff;
+    font-size: 35px;
+    margin-bottom: 10px;
+  }
+}
+
+#page-error-logo{
+  display: block;
+  width: 150px;
+}
+
+#page-error-logo_title{
+  color: $c-gray-6;
+  padding-top: 2px;
+  border-top: 1px solid $c-gray-mid;
+  font-weight: 300;
+  margin-top: 14px;
+}
+
+
+#page-error-message{
+  margin: 80px 0;
+
+  .sprite-chrome, .sprite-firefox, .sprite-opera{
+    float: left;
+    margin-right: 25px;
+  }
+
+  .sprite-chrome:hover{ @include get-sprite(chrome-colored); }
+  .sprite-firefox:hover{ @include get-sprite(firefox-colored); }
+  .sprite-opera:hover{ @include get-sprite(opera-colored); }
+}
+
+#page-error-links{
+  p{
+    margin-bottom: 15px;
+  }
+
+  a{
+    @extend %link_noline;
+    padding-bottom: 2px;
+    border-bottom: 1px solid $c-link;
+    font-weight: 300;
+
+    &:hover{
+      border-color: $c-hover;
+    }
+  }
+}
+
+
+@include max_tablet(){
+  #page-error .f-left {
+    display: none;
+  }
+
+  #page-error .f-right{
+    width: 100%;
+  }
+
+  #page-error-content{
+    padding-left: 0;
+  }
+}
+/* end of OUTDATED BROWSER */
+
+
+
+
+
+
 
 .sec-github{
   text-transform: uppercase;

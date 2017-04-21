@@ -1,0 +1,28 @@
+extends extends/layout_simple.jade
+
+block head
+	- var pageTitle = 'Outdated browser'
+
+block content
+	#page-error.screen
+		.setw
+			.f-zoom
+				.f-left
+					img.img-b(alt="", src="assets/i/drone_broken.png", srcset="assets/i/drone_broken-x2.png")
+				.f-right
+					#page-error-content
+						img#page-error-logo(alt="Drone employee", src="assets/i/de-logo-inverted.png", srcset="assets/i/de-logo-inverted-x2.png")
+						#page-error-logo_title We help businesses hire drones
+
+						#page-error-message
+							h1 Oh, no!
+							p You are using an outdated browser. Please, download up-to-date browser to view this website:
+							.f-zoom
+								a.sprite-chrome(target="_blank", href="https://www.google.com/chrome/browser/desktop/")
+								a.sprite-firefox(target="_blank", href="https://www.mozilla.org/ru/firefox/new/")
+								a.sprite-opera(target="_blank", href="http://www.opera.com/ru?utm_medium=roc&utm_source=burocratik&utm_campaign=outdatedbrowser")
+
+
+						#page-error-links
+							p: a(target="_blank", href="https://github.com/DroneEmployee/drone_employee_ros") Our GitHub repository
+							p: a(target="_blank", href="mailto: vitaly@drone-employee.com") vitaly@drone-employee.com

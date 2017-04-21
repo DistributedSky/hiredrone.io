@@ -81,7 +81,7 @@ a {
   transition: color 0.2s ease;
 }
 
-input, textarea, button, input[type='submit'], .link-bord, .link-bord-a, .sec-github, #index-targets a, input:hover, textarea:hover, button:hover, .link-bord:hover, .link-bord-a:hover, .sec-github:hover, #index-targets a:hover, input:focus, textarea:focus, button:focus, .link-bord:focus, .link-bord-a:focus, .sec-github:focus, #index-targets a:focus, input:visited, textarea:visited, button:visited, .link-bord:visited, .link-bord-a:visited, .sec-github:visited, #index-targets a:visited {
+input, textarea, button, input[type='submit'], .link-bord, .link-bord-a, #page-error-links a, .sec-github, #index-targets a, input:hover, textarea:hover, button:hover, .link-bord:hover, .link-bord-a:hover, #page-error-links a:hover, .sec-github:hover, #index-targets a:hover, input:focus, textarea:focus, button:focus, .link-bord:focus, .link-bord-a:focus, #page-error-links a:focus, .sec-github:focus, #index-targets a:focus, input:visited, textarea:visited, button:visited, .link-bord:visited, .link-bord-a:visited, #page-error-links a:visited, .sec-github:visited, #index-targets a:visited {
   text-decoration: none;
   text-decoration: none !important;
 }
@@ -96,13 +96,73 @@ input, textarea, button, input[type='submit'], .link-bord, .link-bord-a, .sec-gi
           align-items: center;
 }
 
+.sprite-chrome {
+  width: 44.003px;
+  height: 44px;
+  background-image: url("../i/sprite.svg");
+  background-position: 0px 0px;
+}
+.no-svg .sprite-chrome {
+  background-image: url("../i/sprite.png");
+}
+
+.sprite-chrome-colored {
+  width: 43.8px;
+  height: 44px;
+  background-image: url("../i/sprite.svg");
+  background-position: 0px -44px;
+}
+.no-svg .sprite-chrome-colored {
+  background-image: url("../i/sprite.png");
+}
+
 .sprite-drone {
   width: 200px;
   height: 179.7px;
   background-image: url("../i/sprite.svg");
-  background-position: 0px 0px;
+  background-position: 0px -88px;
 }
 .no-svg .sprite-drone {
+  background-image: url("../i/sprite.png");
+}
+
+.sprite-firefox {
+  width: 50px;
+  height: 44px;
+  background-image: url("../i/sprite.svg");
+  background-position: 0px -268px;
+}
+.no-svg .sprite-firefox {
+  background-image: url("../i/sprite.png");
+}
+
+.sprite-firefox-colored {
+  width: 50px;
+  height: 44px;
+  background-image: url("../i/sprite.svg");
+  background-position: 0px -312px;
+}
+.no-svg .sprite-firefox-colored {
+  background-image: url("../i/sprite.png");
+}
+
+.sprite-opera {
+  width: 44px;
+  height: 44px;
+  background-image: url("../i/sprite.svg");
+  background-position: 0px -356px;
+}
+.no-svg .sprite-opera {
+  background-image: url("../i/sprite.png");
+}
+
+.sprite-opera-colored {
+  width: 44px;
+  height: 44px;
+  background-image: url("../i/sprite.svg");
+  background-position: 0px -400px;
+}
+.no-svg .sprite-opera-colored {
   background-image: url("../i/sprite.png");
 }
 
@@ -366,7 +426,7 @@ hr.hr-small {
   display: inline-block;
 }
 
-.blog-post img {
+.blog-post img, .img-b {
   display: block;
   max-width: 100%;
 }
@@ -3305,21 +3365,99 @@ body:not([class*='home']) main[role="main"] {
 
 /*======== END BASIC STYLES =========*/
 /*======== ELEMENTS =========*/
-#oldiebrowser {
-  padding: 10px;
-  padding: 0.625rem;
-  background-color: #F5DCA4;
-  color: #333;
-  border-width: 0px 0px 1px;
-  border-width: 0rem 0rem 0.0625rem;
-  border-style: solid;
-  border-color: #f0ca76;
+/* OUTDATED BROWSER */
+#page-error {
+  background-color: #1A1A1A;
+  color: #fff;
 }
-#oldiebrowser p {
-  margin-bottom: 10px;
-  margin-bottom: 0.625rem;
+#page-error .f-left, #page-error .f-right {
+  width: 50%;
 }
 
+#page-error-content {
+  padding-left: 60px;
+}
+#page-error-content h1 {
+  text-align: left;
+  color: #fff;
+  font-size: 35px;
+  margin-bottom: 10px;
+}
+
+#page-error-logo {
+  display: block;
+  width: 150px;
+}
+
+#page-error-logo_title {
+  color: #808080;
+  padding-top: 2px;
+  border-top: 1px solid #414141;
+  font-weight: 300;
+  margin-top: 14px;
+}
+
+#page-error-message {
+  margin: 80px 0;
+}
+#page-error-message .sprite-chrome, #page-error-message .sprite-firefox, #page-error-message .sprite-opera {
+  float: left;
+  margin-right: 25px;
+}
+#page-error-message .sprite-chrome:hover {
+  width: 43.8px;
+  height: 44px;
+  background-image: url("../i/sprite.svg");
+  background-position: 0px -44px;
+}
+.no-svg #page-error-message .sprite-chrome:hover {
+  background-image: url("../i/sprite.png");
+}
+#page-error-message .sprite-firefox:hover {
+  width: 50px;
+  height: 44px;
+  background-image: url("../i/sprite.svg");
+  background-position: 0px -312px;
+}
+.no-svg #page-error-message .sprite-firefox:hover {
+  background-image: url("../i/sprite.png");
+}
+#page-error-message .sprite-opera:hover {
+  width: 44px;
+  height: 44px;
+  background-image: url("../i/sprite.svg");
+  background-position: 0px -400px;
+}
+.no-svg #page-error-message .sprite-opera:hover {
+  background-image: url("../i/sprite.png");
+}
+
+#page-error-links p {
+  margin-bottom: 15px;
+}
+#page-error-links a {
+  padding-bottom: 2px;
+  border-bottom: 1px solid #00aded;
+  font-weight: 300;
+}
+#page-error-links a:hover {
+  border-color: #6abc45;
+}
+
+@media screen and (max-width: 767px) {
+  #page-error .f-left {
+    display: none;
+  }
+
+  #page-error .f-right {
+    width: 100%;
+  }
+
+  #page-error-content {
+    padding-left: 0;
+  }
+}
+/* end of OUTDATED BROWSER */
 .sec-github {
   text-transform: uppercase;
   font-weight: 600;

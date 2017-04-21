@@ -1,6 +1,12 @@
 $icons: (
-    sprite: (width: 200px, height: 180px, pngPath: '../i/sprite.png', svgPath: '../i/sprite.svg'),
-    drone: (width: 200px, height: 179.7px, backgroundX: 0px, backgroundY: 0px),
+    sprite: (width: 200px, height: 444px, pngPath: '../i/sprite.png', svgPath: '../i/sprite.svg'),
+    chrome: (width: 44.003px, height: 44px, backgroundX: 0px, backgroundY: 0px),
+    chrome-colored: (width: 43.8px, height: 44px, backgroundX: 0px, backgroundY: -44px),
+    drone: (width: 200px, height: 179.7px, backgroundX: 0px, backgroundY: -88px),
+    firefox: (width: 50px, height: 44px, backgroundX: 0px, backgroundY: -268px),
+    firefox-colored: (width: 50px, height: 44px, backgroundX: 0px, backgroundY: -312px),
+    opera: (width: 44px, height: 44px, backgroundX: 0px, backgroundY: -356px),
+    opera-colored: (width: 44px, height: 44px, backgroundX: 0px, backgroundY: -400px),
 );
 
 $sprite: map-get($icons, sprite);
@@ -16,4 +22,10 @@ $sprite: map-get($icons, sprite);
     .no-svg & { background-image: url(map-get($sprite, pngPath)); }
 }
 
+.sprite-chrome { @include get-sprite(chrome); }
+.sprite-chrome-colored { @include get-sprite(chrome-colored); }
 .sprite-drone { @include get-sprite(drone); }
+.sprite-firefox { @include get-sprite(firefox); }
+.sprite-firefox-colored { @include get-sprite(firefox-colored); }
+.sprite-opera { @include get-sprite(opera); }
+.sprite-opera-colored { @include get-sprite(opera-colored); }
