@@ -96,74 +96,54 @@ input, textarea, button, input[type='submit'], .link-bord, .link-bord-a, #page-e
           align-items: center;
 }
 
+.svg .sprite-chrome, .svg .sprite-chrome-colored, .svg .sprite-drone, .svg .sprite-firefox, .svg .sprite-firefox-colored, .svg .sprite-opera, .svg .sprite-opera-colored, .svg #page-error-message .sprite-chrome:hover, .svg #page-error-message .sprite-firefox:hover, .svg #page-error-message .sprite-opera:hover {
+  background-image: url("../i/sprite.svg");
+}
+
+.sprite-chrome, .sprite-chrome-colored, .sprite-drone, .sprite-firefox, .sprite-firefox-colored, .sprite-opera, .sprite-opera-colored, #page-error-message .sprite-chrome:hover, #page-error-message .sprite-firefox:hover, #page-error-message .sprite-opera:hover {
+  background-image: url("../i/sprite.png");
+}
+
 .sprite-chrome {
   width: 44.003px;
   height: 44px;
-  background-image: url("../i/sprite.svg");
   background-position: 0px 0px;
-}
-.no-svg .sprite-chrome {
-  background-image: url("../i/sprite.png");
 }
 
 .sprite-chrome-colored {
   width: 43.8px;
   height: 44px;
-  background-image: url("../i/sprite.svg");
   background-position: 0px -44px;
-}
-.no-svg .sprite-chrome-colored {
-  background-image: url("../i/sprite.png");
 }
 
 .sprite-drone {
   width: 200px;
   height: 179.7px;
-  background-image: url("../i/sprite.svg");
   background-position: 0px -88px;
-}
-.no-svg .sprite-drone {
-  background-image: url("../i/sprite.png");
 }
 
 .sprite-firefox {
   width: 50px;
   height: 44px;
-  background-image: url("../i/sprite.svg");
   background-position: 0px -268px;
-}
-.no-svg .sprite-firefox {
-  background-image: url("../i/sprite.png");
 }
 
 .sprite-firefox-colored {
   width: 50px;
   height: 44px;
-  background-image: url("../i/sprite.svg");
   background-position: 0px -312px;
-}
-.no-svg .sprite-firefox-colored {
-  background-image: url("../i/sprite.png");
 }
 
 .sprite-opera {
   width: 44px;
   height: 44px;
-  background-image: url("../i/sprite.svg");
   background-position: 0px -356px;
-}
-.no-svg .sprite-opera {
-  background-image: url("../i/sprite.png");
 }
 
 .sprite-opera-colored {
   width: 44px;
   height: 44px;
-  background-image: url("../i/sprite.svg");
   background-position: 0px -400px;
-}
-.no-svg .sprite-opera-colored {
-  background-image: url("../i/sprite.png");
 }
 
 @font-face {
@@ -3407,29 +3387,17 @@ body:not([class*='home']) main[role="main"] {
 #page-error-message .sprite-chrome:hover {
   width: 43.8px;
   height: 44px;
-  background-image: url("../i/sprite.svg");
   background-position: 0px -44px;
-}
-.no-svg #page-error-message .sprite-chrome:hover {
-  background-image: url("../i/sprite.png");
 }
 #page-error-message .sprite-firefox:hover {
   width: 50px;
   height: 44px;
-  background-image: url("../i/sprite.svg");
   background-position: 0px -312px;
-}
-.no-svg #page-error-message .sprite-firefox:hover {
-  background-image: url("../i/sprite.png");
 }
 #page-error-message .sprite-opera:hover {
   width: 44px;
   height: 44px;
-  background-image: url("../i/sprite.svg");
   background-position: 0px -400px;
-}
-.no-svg #page-error-message .sprite-opera:hover {
-  background-image: url("../i/sprite.png");
 }
 
 #page-error-links p {

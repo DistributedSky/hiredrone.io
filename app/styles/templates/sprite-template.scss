@@ -6,15 +6,19 @@ $icons: (
 
 $sprite: map-get($icons, sprite);
 
+%back_svg{ background-image: url(map-get($sprite, svgPath)); }
+%back_png{ background-image: url(map-get($sprite, pngPath)); }
+
 @mixin get-sprite($spritename){
     $spritename: map-get($icons, $spritename);
     
     width: map-get($spritename, width);
     height: map-get($spritename, height);
-    background-image: url(map-get($sprite, svgPath));
+    
+    @extend %back_png;
     background-position: map-get($spritename, backgroundX) map-get($spritename, backgroundY);
 
-    .no-svg & { background-image: url(map-get($sprite, pngPath)); }
+    .svg & { @extend %back_svg; }
 }
 
 {{#shapes}}
