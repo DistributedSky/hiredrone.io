@@ -80,12 +80,10 @@ h2 { @include font-size(32, $scale-small);
   @include rem('margin-bottom', $vertical-rythm*2);
 }
 h3 { @include font-size(26, $scale-small); }
-h4 { @include font-size(24, $scale-small); }
-h5 { @include font-size(22, $scale-small); }
+h4 { @include font-size(22, $scale-small); }
+h5 { @include font-size(20, $scale-small); }
 
-h3, h4, h5 {
-  // font-weight: 400;
-}
+h4, h5 { text-align: left; }
 
 ul, ol {
   @include rem('margin-left', 15);

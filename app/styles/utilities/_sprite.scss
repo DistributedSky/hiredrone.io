@@ -20,9 +20,9 @@ $sprite: map-get($icons, sprite);
     width: map-get($spritename, width);
     height: map-get($spritename, height);
     
-    @extend %back_png;
     background-position: map-get($spritename, backgroundX) map-get($spritename, backgroundY);
 
+    @extend %back_png;
     .svg & { @extend %back_svg; }
 }
 

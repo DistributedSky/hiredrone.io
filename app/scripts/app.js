@@ -65,6 +65,10 @@ jQuery(document).ready(function($){
         $("[data-fancybox]").fancybox({
             margin : [40, 40]
         });
+
+        $(".gallery-icon a").fancybox({
+            margin : [40, 40]
+        });
     }
 
     //Detect Safari

@@ -330,41 +330,6 @@ $lines_c: $c-gray-7;
 
   }
 
-  // .circle {
-  //   display: inline-block;
-  //   vertical-align: top;
-
-  //   width: $c_r;
-  //   height: $c_r;
-  //   background: $lines_c;
-  //   border-radius: $c_r/2;
-
-  //   margin-left: 2px;
-
-  //   &:first-child{
-  //     margin-left: 0;
-  //   }
-  // }
-
-  // #index-banner_decor-1, #index-banner_decor-2{
-  //   height: $c_r;
-  //   position: absolute;
-  //   bottom: - $c_r/2 + 0.5;
-
-  //    @include max_tablet(){
-  //     display: none;
-  //   }
-  // }
-
-  // #index-banner_decor-1{
-  //   left: - $c_r - 6;
-  // }
-
-  // #index-banner_decor-2{
-  //   right: - $c_r*3 - 2*2 - 10 - 8;
-  // }
-
-
 
 }
 
@@ -372,4 +337,10 @@ $lines_c: $c-gray-7;
 .index-banner_content{
   @include rem('padding', 0, 20, 20);
   font-weight: 100;
+}
+
+
+#index-banner-btn{
+  text-align: center;
+  @include rem('margin-top', $vertical-rythm*3);
 }

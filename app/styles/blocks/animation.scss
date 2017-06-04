@@ -115,19 +115,19 @@ $patternReveal-delay: $BannerCols-delay;
 
 
 
-.#{$modernizr-animation}.no-safari{
+// .#{$modernizr-animation}.no-safari{
 
-	header[role='banner'].screen{
-		// animation: PatternReveal $patternReveal-duration $patternReveal-delay cubic-bezier(0.24,0.5,0.5,1) forwards;
-		animation: PatternReveal $patternReveal-duration $patternReveal-delay linear forwards;
+// 	header[role='banner'].screen{
+// 		// animation: PatternReveal $patternReveal-duration $patternReveal-delay cubic-bezier(0.24,0.5,0.5,1) forwards;
+// 		animation: PatternReveal $patternReveal-duration $patternReveal-delay linear forwards;
 
-		&:after{
-			background-color: rgba(#000, .1);
-			// animation: PatternBlackenning $patternReveal-duration $patternReveal-delay cubic-bezier(0.24,0.4,0.9,1) forwards;
-			animation: PatternBlackenning $patternReveal-duration $patternReveal-delay linear forwards;
-		}
-	}
-}
+// 		&:after{
+// 			background-color: rgba(#000, .1);
+// 			// animation: PatternBlackenning $patternReveal-duration $patternReveal-delay cubic-bezier(0.24,0.4,0.9,1) forwards;
+// 			animation: PatternBlackenning $patternReveal-duration $patternReveal-delay linear forwards;
+// 		}
+// 	}
+// }
 
 
 .#{$modernizr-animation}{
@@ -173,6 +173,15 @@ $patternReveal-delay: $BannerCols-delay;
 				animation-delay: $BannerCols-duration + $BannerCols-delay*3;
 			}
 		}
+	}
+
+	#index-banner-btn{
+		opacity: 0;
+		animation-name: FadeIn;
+		animation-timing-function: ease-in;
+		animation-duration: $BannerCols-duration;
+		animation-fill-mode: forwards;
+		animation-delay: $BannerCols-duration + $BannerCols-delay*3.5;
 	}
 
 	
@@ -286,11 +295,11 @@ $patternReveal-delay: $BannerCols-delay;
 
 
 			.link-bord-a.right{
-				@include link-bord__animate('rightdirect solid bottomside', 3s);
+				@include link-bord__animate('rightdirect solid bottomside', $f__ar_delay);
 			}
 
 			.link-bord-a.left{
-				@include link-bord__animate('leftdirect solid bottomside', 3s);
+				@include link-bord__animate('leftdirect solid bottomside', $f__ar_delay);
 			}
 		}
 	}

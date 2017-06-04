@@ -155,6 +155,19 @@ body:not([class *= 'home']){
 }
 
 
+
+.row{
+  @include rem('margin-top', $vertical-rythm * 2);
+  &:first-child { margin-top: 0; }
+
+  *[class*='col-']{
+      @include rem('margin-bottom', $vertical-rythm * 2);
+      box-sizing: border-box;
+  }
+}
+
+
+
 /*======== END BASIC STYLES =========*/
 
 
@@ -162,21 +175,6 @@ body:not([class *= 'home']){
 
 
 /*======== ELEMENTS =========*/
-
-// #oldiebrowser{
-//   @include rem('padding', 10);
-//   background-color: #F5DCA4;
-//   color: $c-gray-9;
-
-//   @include rem('border-width', 0, 0, 1);
-//   border-style: solid;
-//   border-color: darken(#F5DCA4, 10%);
-
-//   p{
-//     @include rem('margin-bottom', 10);
-//   }
-// }
-
 
 
 /* OUTDATED BROWSER */
@@ -318,6 +316,14 @@ body:not([class *= 'home']){
 table{
   width: 100%;
   @include rem('margin', $vertical-rythm*2, 0);
+
+  &:first-child{
+    margin-top: 0;
+  }
+
+  &:last-child{
+    margin-bottom: 0;
+  }
 
   td, th {
     color: $c-table-text;
